@@ -1,0 +1,10 @@
+===================================================================
+--- src/newgrf.h	(revision 24056)
++++ src/newgrf.h	(working copy)
+@@ -192,4 +192,6 @@
+ StringID MapGRFStringID(uint32 grfid, StringID str);
+ void ShowNewGRFError();
+ 
++struct TemplateVehicle;
++
+ #endif /* NEWGRF_H */

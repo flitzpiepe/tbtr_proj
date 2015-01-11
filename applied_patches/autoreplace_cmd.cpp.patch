@@ -1,0 +1,12 @@
+===================================================================
+--- src/autoreplace_cmd.cpp	(revision 24056)
++++ src/autoreplace_cmd.cpp	(working copy)
+@@ -332,7 +332,7 @@
+  * @param new_head The new head of the completely replaced vehicle chain
+  * @param flags the command flags to use
+  */
+-static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, DoCommandFlag flags)
++CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, DoCommandFlag flags)
+ {
+ 	CommandCost cost = CommandCost();
+ 

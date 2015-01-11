@@ -1,0 +1,21 @@
+===================================================================
+--- src/vehiclelist.cpp	(revision 24056)
++++ src/vehiclelist.cpp	(working copy)
+@@ -141,7 +141,7 @@
+ 		case VL_GROUP_LIST:
+ 			if (vli.index != ALL_GROUP) {
+ 				FOR_ALL_VEHICLES(v) {
+-					if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
++					if (!HasBit(v->subtype, GVSF_VIRTUAL) && v->type == vli.vtype && v->IsPrimaryVehicle() &&	//MYGUI
+ 							v->owner == vli.company && v->group_id == vli.index) {
+ 						*list->Append() = v;
+ 					}
+@@ -152,7 +152,7 @@
+ 
+ 		case VL_STANDARD:
+ 			FOR_ALL_VEHICLES(v) {
+-				if (v->type == vli.vtype && v->owner == vli.company && v->IsPrimaryVehicle()) {
++				if (!HasBit(v->subtype, GVSF_VIRTUAL) && v->type == vli.vtype && v->owner == vli.company && v->IsPrimaryVehicle()) { //MYGUI
+ 					*list->Append() = v;
+ 				}
+ 			}

@@ -1,0 +1,11 @@
+===================================================================
+--- src/autoreplace_func.h	(revision 24056)
++++ src/autoreplace_func.h	(working copy)
+@@ -83,4 +83,7 @@
+ 
+ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company);
+ 
++// MYGUI
++CommandCost CopyHeadSpecificThings(Vehicle*, Vehicle*, DoCommandFlag);
++
+ #endif /* AUTOREPLACE_FUNC_H */

@@ -1,0 +1,11 @@
+===================================================================
+--- src/newgrf_spritegroup.cpp	(revision 24056)
++++ src/newgrf_spritegroup.cpp	(working copy)
+@@ -77,7 +77,6 @@
+ 	return (val >> rot) | (val << (32 - rot));
+ }
+ 
+-
+ /* Evaluate an adjustment for a variable of the given size.
+  * U is the unsigned type and S is the signed type to use. */
+ template <typename U, typename S>

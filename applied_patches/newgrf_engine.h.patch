@@ -1,0 +1,13 @@
+===================================================================
+--- src/newgrf_engine.h	(revision 24056)
++++ src/newgrf_engine.h	(working copy)
+@@ -67,6 +67,9 @@
+ void AlterVehicleListOrder(EngineID engine, EngineID target);
+ void CommitVehicleListOrderChanges();
+ 
++struct ResolverObject;
++void NewVehicleResolverWrapper(ResolverObject*, EngineID);
++
+ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id);
+ 
+ #endif /* NEWGRF_ENGINE_H */

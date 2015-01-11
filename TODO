@@ -1,0 +1,28 @@
+
+updated: 2015-01-11
+
+TODO
+	merging patch 0.4c into the current trunk
+		- open issues:
+			* aaa_template_gui_create_virtual_train.cpp: 103
+				- engine number sorting relies on ListPositionOfEngine, which is not available anymore (in newgrf_engine)
+				- need to find the currently used alternative
+			* aaa_template_gui_replace_all.cpp : ~100
+				- same
+			* aaa_template_vehicle_func.cpp : 549
+				- VehicleCargoList::Count() is not available anymore
+				- using StoredCount() for now, need to check if this is correct
+			* aaa_template_vehicle_func.cpp : 56x
+				- moving cargo works differently now, packet-by-packet
+				- disabled the movement of cargo for now
+			* train_cmd.cpp : 4136, 4206
+				- VehicleUpdateViewport() doesn't exist anymore
+				- just disabled it for now, don't remember what it is for
+
+		- reuse new class BaseConsist for storing head-related stuff
+
+DONE
+	- split patch into patches for each file
+	- apply file patches
+	- make everything compile again
+
