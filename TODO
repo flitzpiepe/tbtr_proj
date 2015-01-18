@@ -1,12 +1,12 @@
 
-updated:		2015-01-15
+updated:		2015-01-18
 next version:	v0.4e
 
 TODO
-	! fix compiler warnings
 	- rm/do all TODOs
 	- rm all MYGUIs
 	- look through patch (branch diff) and remove stupid comments and such
+	- i++ -> ++i
 
 
 DONE
@@ -17,9 +17,12 @@ DONE
 		+ corrected EngineNumberSorter	
 		+ corrected movement of cargo
 		+ adapted updateViewport code
+	- fixed compiler warnings
 
 
 LATER
 	- code refactoring
 	- reuse new class BaseConsist for storing head-related stuff
+
+	? does tmpl rplcmt succeed if the action is to just remove some wagons but there is not enough money for a fully new train
 
