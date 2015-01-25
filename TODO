@@ -6,6 +6,8 @@ TODO
 	- rm/do all TODOs
 	- rm all MYGUIs
 	- look through patch (branch diff) and remove stupid comments and such
+	- rename files + classes (-aaa)
+		* includes
 	- i++ -> ++i
 
 
@@ -22,7 +24,12 @@ DONE
 
 LATER
 	- code refactoring
-	- reuse new class BaseConsist for storing head-related stuff
+		- reuse new class BaseConsist for storing head-related stuff
+		- train_cmd.cpp:3748 :: Money calculateOverallValue(veh*)
+			* does there exist something like this for the new baseconsist class ?
 
 	? does tmpl rplcmt succeed if the action is to just remove some wagons but there is not enough money for a fully new train
+
+	- when a train is to be extended by adding only a wagon (e.g.), it seems like the cost for a completely new train are
+		considered, instead of only the actual update cost, this doesn't make sense
 

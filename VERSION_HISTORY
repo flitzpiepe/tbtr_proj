@@ -1,0 +1,13 @@
+<0.4c:
+	- initialized with the existing sources
+
+0.4c:
+	- split patch into patches for each file
+	- apply file patches
+	- make everything compile again
+	- code adaptations:
+		+ corrected EngineNumberSorter	
+		+ corrected movement of cargo
+		+ adapted updateViewport code
+	- fixed compiler warnings
+
