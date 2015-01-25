@@ -1,10 +1,9 @@
 
-updated:		2015-01-18
+updated:		2015-01-25
 next version:	v0.4e
 
 TODO
 	- rm/do all TODOs
-	- rm all MYGUIs
 	- look through patch (branch diff) and remove stupid comments and such
 	- rename files + classes (-aaa)
 		* includes
@@ -12,14 +11,7 @@ TODO
 
 
 DONE
-	- split patch into patches for each file
-	- apply file patches
-	- make everything compile again
-	- code adaptations:
-		+ corrected EngineNumberSorter	
-		+ corrected movement of cargo
-		+ adapted updateViewport code
-	- fixed compiler warnings
+	- rm all MYGUIs
 
 
 LATER
@@ -27,6 +19,11 @@ LATER
 		- reuse new class BaseConsist for storing head-related stuff
 		- train_cmd.cpp:3748 :: Money calculateOverallValue(veh*)
 			* does there exist something like this for the new baseconsist class ?
+		- virtual void SetStringParameters(int widget) const;
+			* is used to calculate the min window size, should be updated to contain all necessary stuff
+		- normalize widget strings
+			* the form with enum {lotsa string_ids} is not used anymore (?)
+			* copy-paste code doesn't use this consistently either (?)
 
 	? does tmpl rplcmt succeed if the action is to just remove some wagons but there is not enough money for a fully new train
 
