@@ -1,21 +1,31 @@
 
-updated:		2015-01-25
+updated:		2015-02-08
 next version:	v0.4e
 
 TODO
-	- rm/do all TODOs
 	- look through patch (branch diff) and remove stupid comments and such
 	- rename files + classes (-aaa)
 		* includes
-	- i++ -> ++i
 
 
 DONE
 	- rm all MYGUIs
+	- rm/do all TODOs
+	- i++ -> ++i
 
 
 LATER
 	- code refactoring
+		- design + impl workflow for editing or creating a template train
+			* main gui shall be noticed correctly whenever a template has definitively changed
+				- notifying the main gui is done via given the child windows pointers to bools which are set by the child and checked by the parent
+			* main gui shall not rebuild the template list until that change has been confirmed
+				- currently, the list is being rebuilt constantly
+			* will require to reactivate the first line in ...vehicle_func::BuildTemplateGuiList
+			* write header file for main gui to allow children to call its specialized functions
+		- write header file for TemplateReplaceWindow
+			* child windows shall call functions from their parent in order to extract information or notify about progress
+			* e.g. create template shall be able to notify about a new template so that the template list can be rebuilt (instead of rebuilding it on every paint event)
 		- reuse new class BaseConsist for storing head-related stuff
 		- train_cmd.cpp:3748 :: Money calculateOverallValue(veh*)
 			* does there exist something like this for the new baseconsist class ?
@@ -25,8 +35,22 @@ LATER
 			* the form with enum {lotsa string_ids} is not used anymore (?)
 			* copy-paste code doesn't use this consistently either (?)
 
+	- display error message boxes
+		* when a template could not be cloned from an existing train
+		* when a template could not be cloned from some other tmpl
+
+	- add hotkey for main gui
+
+	- settings entry
+
 	? does tmpl rplcmt succeed if the action is to just remove some wagons but there is not enough money for a fully new train
 
 	- when a train is to be extended by adding only a wagon (e.g.), it seems like the cost for a completely new train are
 		considered, instead of only the actual update cost, this doesn't make sense
+
+	- in commit: cadfac9
+		* deleted a call to deleteAllTemplateReplacements with param -1 (group id, should be invalid)
+	
+	- rm debugging functions in _func.cpp
+		* pat, pav, ptv, pvt
 
