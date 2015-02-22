@@ -1,17 +1,11 @@
 
-updated:		2015-02-08
-next version:	v0.4e
+updated:		2015-02-22
+next version:	v0.6
 
 TODO
-	- look through patch (branch diff) and remove stupid comments and such
-	- rename files + classes (-aaa)
-		* includes
 
 
 DONE
-	- rm all MYGUIs
-	- rm/do all TODOs
-	- i++ -> ++i
 
 
 LATER

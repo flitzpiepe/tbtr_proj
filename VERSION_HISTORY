@@ -1,7 +1,7 @@
 <0.4c:
 	- initialized with the existing sources
 
-0.4c:
+0.4d:
 	- split patch into patches for each file
 	- apply file patches
 	- make everything compile again
@@ -10,4 +10,10 @@
 		+ corrected movement of cargo
 		+ adapted updateViewport code
 	- fixed compiler warnings
+
+0.5:
+	- renamed source files prefix: aaa_ -> tbtr_
+	- code cleanup
+	- compatible to current trunk version
+		* svn:r27156, git:9a601a10290e9ae2f0e6e0597a579a6a2168c99f
 
