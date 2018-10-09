@@ -1,0 +1,148 @@
+Hi,
+
+after a long while of sporadic tinkering, here is the first released version of my first very own OpenTTD project!
+
+Links to [b]patches[/b], [b]binaries[/b] and [b]screenshots[/b] will be kept up-to-date at the bottom of this post.
+As well as the [b]trunk version[/b] that I tested this patch against, last.
+And there is a TODO list of upcoming features or fixes.
+
+[color=#FFBF00][b]
+___What does it do ?___[/b][/color]
+In short:
+[list]
+[*]it provides an advanced auto-replace mechanism for trains and the various subtypes
+[*]it allows the player to pre-define 'templates' of how a train should look like
+[*]a vehicle group is then set up to replace all of its trains to look exactly like the defined template
+[*]on the next depot visit of any train in that group, it will get changed to match the template, buying new vehicles, moving old ones around as necessary
+[*]remaining parts of a train after the replacement step may either be kept in the depot for later reuse or may be sold automatically[/list]
+
+(I was going to post a screenshot here but the forum doesn't support spoiler wraps and it is really large, so I put it in as an attachement).
+
+[color=#FFBF00][b]___Why use it ?___[/b][/color]
+The motivation of this patch is to reduce micro-management in larger scale games. There are multiple scenarios where I don't think the current auto-replace feature is sufficient:
+[list]
+
+[*]You are running a line for any good which you set up nicely to support the needed amount of transported cargo. At some later point in the game, new wagons become available that have significantly increased capacities. You can either replace them all via autoreplacement but then lack efficiency as you wouldn't have needed as many due to the increased capacity of each wagon. Or you would need to change all trains by hand to contain a smaller number of the newer, better wagons.
+
+[*]You are running heavy trains that require multiple engines to be efficient. When later in the game newer and stronger engines become available it might be sufficient to use a single engine for each train instead of multiple ones due to higher power of latest technologies. And you now want to change up your trains to use 1 new engine instead of 2 or more old ones.[/list]
+
+Both scenarios (and possibly more) are really only solvable with a lot of manual sending-trains-to-depot-and-modifying-them-by-hand. Both scenarios occurred to me especially in larger scale games with custom newgrf sets where the change in capacity and power of vehicles over time can be severe.
+With template based train replacement, you can specify exactly what you want your trains to be composed of - and what refit they should use - and have them changed up in the depot automatically.
+
+[color=#FFBF00][b]___How to use it ?___[/b][/color]
+There are a couple of notes about its usage:
+[list]
+[*]When opening a group window (for trains, please), you find a new drop-down entry for managing the group which reads Template Replacement and will open up the new gui element.
+[*]Select a group from the top list and a template-train from the bottom list, then press 'start replacing' which will trigger the replacement function whenever any train of the selected group will enter a depot the next time. 
+[*]Autoreplacement as you know it, is of course still available for use
+[*]The functionality is tightly tied to using groups, i.e. all automatic replacements are set up on a per-group basis, otherwise it would be very hard to specify which train should be composed in which way
+[*]the template replacement function will _always_ attempt to reuse as much of the treated train as possible so that as few vehicles as possible will be bought
+[*]the order in which vehicles of a template are defined is essential to the replacement, so we will not only make sure that the new train includes every vehicle from the template, but also in the correct order to prevent messed up trains roaming the game world ;)
+[*][color=#990000][b]configurable behaviour:[/b][/color]
+[list]
+[*]a train that is getting template replaced in any depot, might be using vehicles that are idle inside the depot instead of buying new ones, so you can leave old engines or wagons in depots for later re-composition of other trains.
+[*]after a train got changed by template-replacement, its old engines and wagons which are not part of the consist anymore, can optionally remain inside the depot in a neutral and idle state for later usage, and are not sold automatically if the option is set so[/list][/list]
+
+I will add suggestions or criticism to a todo-list in this thread if you want to help me by providing some.
+
+Thanks for reading, trying it and hopefully providing feedback :)
+
+--------------------------------------------------------------------------------------------------------------------------------
+---------- [b]Todo[/b] --------------------------------------------------------------------------------------------------------------
+[size=85]
+|___[color=#111111]black[/color]: planned
+|___[color=#FFFFFF]white[/color]: rejected
+|___[color=#00FF00]green[/color]: done
+|___[color=#FF0000]red:[/color] something aweful[/size]
+
+[list]
+[*][color=#40FF00]Combination of Auto- and TemplateReplacement[/color]
+[list][*][color=#40FF00]Have template replacement override auto replacement if the former is set[/color][/list]
+[*][color=#40FF00]Ability to filter template list for specific train-subtype[/color][list][*]Include new All-types filter[/list]
+[*][color=#40FF00]Set of game options to define replacement behaviour[list][*]implemented as template-specific setting[/color][/list]
+[*][color=#40FF00]Cargo refit for trains treated by tmpl rplm[/color]
+[*][color=#40FF00]Clone a template from a train[/color]
+
+[*][color=#40FF00]Display current refit setting for template[/color]
+[*][color=#40FF00]Transfer cargo to new train from left-over chain[list][*]currently, only vehicles that remain in the chain keep their cargo[/list][/color]
+[*][color=#40FF00]Exchange specific type of vehicle by another for all templates at once[/color]
+
+[*][color=#FFFFFF]TemplateReplacement on all vehicles inside a specific depot[/color]
+[*][color=#FFFFFF]('Meta-Templates' to compose templates of smaller ones and reduce the overall number of defined templates)[/color]
+[*][list][*]If anyone thinks these last two points are useful, please notify me, otherwise I probably won't do them[/list][/list]
+
+[list]
+[*]Clone a template from another template
+[*]Optionally auto-disable template replacements when all trains are finished
+
+[*]Ensure networking compatibility
+[*]Game settings entry
+[*]Hotkey for opening the main GUI window
+[*]Rework the main GUI, I envision the following:[list]
+[*][b]single click:[/b] select/deselect current template (like it is now)
+[*][b]double click:[/b] open the window for buying new vehicles in order to add them to the double-clicked template
+[*][b]drag-n-drop:[/b] moving around the individual wagons and engines of the template, directly from the main GUI window[/list]
+
+[*]The ability to use a template replacement as a vehicle order[list]
+[*]the template would be used independently of a vehicle group
+[*]replacement order can be inserted similar to 'visit depot for maintenance'[/list][/list]
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+---------- [b]Compatibility[/b] ---------------------------------------------------------------------------------------------------
+[color=#00FF00][b]working:[/b][/color]
+- trunk r27742
+
+--------------------------------------------------------------------------------------------------------------------------------
+---------- [b]Versions[/b] ---------------------------------------------------------------------------------------------------
+v0.1:
+[list][*]initial release[/list]
+v0.1b:
+[list][*]no autoreplacement if tmpl rpl is scheduled
+[*]print length in tiles of tmpl consists in main gui
+[*]enabled dropdown list to filter templates for railtypes
+[*]gui enhancements
+[*]fixed: missing header files in sources.list[/list]
+v0.2x:
+[list][*]trains composed under template replacement receive the specified cargo refit
+[*]now configurable replacement behaviour (as described in the OP - set the reuse of idle vehicles in depot and set whether remaining vehicles should be kept or sold)
+[*]template length (in tile units) displayed in edit window
+[*]fixes by Zuu
+[*]sub-versions include hotfixes for v0.2[/list]
+v0.3(x):
+[list][*]display number of trains that still need replacement with respect to selected template
+[*]cloning of templates from trains in main gui or create gui
+[*][b]fixed:[/b] When at the same time two trains where in the same depot and the second one was due for template replacement, it would take apart the other train inside the depot (if option 'use depot' was set). I didn't realize before that in a train which is not 'stopped_in_depot', its wagons are still considered 'stopped_in_depot'.[/list]
+v0.4(x):
+[list]
+[*][b]feature:[/b] replace all vehicle types among templates (a.k.a autoreplace among templates)
+[*][b]gui:[/b] display extensive vehicle information for templates, e.g. cargo capacities, consist strength (kN, PS, ...)
+[*]keep refit when cloning templates from trains
+[*]transfer cargo to new train after template replacement
+[*]sort groups list alphabetically in tmpl rpl main gui 
+[*][b]fixed:[/b] problems with wrong value for the selected group and template (don't remember the exact occasion, but my done-list says I fixed something there :) )
+[*][b]version b - fixed:[/b] fixed a crash on template creation :/
+[*][b]version c - fixed:[/b] using a template with 'use refit' option set to *off* was producing insane refit behaviour in some cases [/list]
+v0.5
+[list]
+[*]move the current version (v.0.4c) to newest trunk
+[*]move to git
+[*]0.5a: 2 hotfixes by DC-1
+[*]0.5b:
+[list]
+[*]regenerated project files to contain the updated source file names
+[*]merged with trunk 27171[/list][/list]
+v0.7, v0.701
+[list]
+[*]merged with trunk r27742
+[*]updated for new sprite system in openttd
+[*]added bugfixes + some features implemented for tbtr in the mini patchpack, with kind permission from coherently_olive[/list]
+---------- [b]PLAN[/b] ----------
+--------------------------------------------------------------------------------------------------------------------------------
+---------- [b]Downloads[/b] ---------------------------------------------------------------------------------------------------
+[list]
+[*]See attachements for a screenshot (outdated version, but still valid)
+[*]Linux build (0.701): [url]https://github.com/flitzpiepe/tbtr_proj/raw/master/releases/linux/openttd_tbtr_v0.701.tar.xz[/url]
+[*]Win32 build (v0.701): [url]https://github.com/flitzpiepe/tbtr_proj/raw/master/releases/win32/openttd_tbtr_v0.701.7z[/url]
+[*]git repository: https://github.com/flitzpiepe/OpenTTD_TBTR
+[*]latest patch: https://raw.githubusercontent.com/flitzpiepe/tbtr_proj/master/patches/tbtr_v0.701.patch[/list]

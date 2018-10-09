@@ -1,0 +1,55 @@
+TODO
+    - temporary sprite system update
+        ...template_vehicle:func.cpp::SetupTemplateVehicleFromVirtual()
+    - ...func.cpp::TransferCargoForTrain() should return the amount of cargo being transferred
+        ? why
+    - disabled copypastecode from autoreplace should be reimplemented for tbtr
+        * cargo after refit should be thrown away
+    - CmdTemplateReplaceVehicle():
+        - fit its signature to match the common interface for Cmd functions
+        - do something with the computed move costs
+        - set the result commandcost success to true or false before returning
+            * this was set on the if-else statement in 572, the returned object is "buy"
+        - func.cpp:668: TODO: is this enough ? might it be that we bought a new wagon here and it now has std refit ?
+    - build a combined window for template creation
+        - add vehicle selection list to the build window
+    - test (eg.under minipp): set templ, change comp.colors, check if templ. changes colors, too
+        * works under minipp
+        - test in tbtr
+        * dbg message in minipp:
+            Tried to load normal sprite #723 as a recolour sprite ... NewGRF interference?
+            - test, maybe output the spriteid when a tmpl is built
+    - sprite system update
+        ! crashed during creating a new template, but on branch test/sl_vehspriteseq
+            * works fine under feat/spritesystem
+        - replaced tmplveh drawing with VehicleSpriteSeq::Draw, test
+            ! sprite is not updated for later parts in the chain (?)
+        - depot_gui.cpp:129 uses
+            seq.Draw(px + (rtl ? -offset.x : offset.x), height / 2 + offset.y, pal, v->vehstatus & VS_CRASHED);
+    - vehfunc: NumTrainsNeedTemplateReplacement should count only the current company's trains
+        ? already handled due to group id
+    - tbtr_veh_func::TestBuyAll... needs a better method of calculating the overall template replacement cost + success
+        * described in the comment above the function
+    - code cleanup
+        ? feat:normalize tmpl rpl: cleanup: remove the helper function
+		- check for all functions if they're used
+            - check CalculateTemplateReplacementCost
+                ? used
+                    * no
+                ? can be merged with CmdTemplateReplaceVehicle without DC_EXEC
+        - debugging output could maybe be reincluded as [dbg] messages
+            * for now, it is still available under branch feat/printf_debugging
+			* DEBUG from debug.h
+        - vehfunc: CloneVirtualTrainFromTrain: couldn't just the Train be used for creating a template (later on) instead of going through the intermediate virtualtrain object here?
+
+TOTEST
+    - test/transfer_cargo_from_autoreplace
+        has to be tested with a tbtr example
+    ? will CmdSellRailWagon remove the whole chain if the first vehicle of a chain is being sold
+        - maybe remove the DeleteVirtualTrain function, if this is not the case
+        * otherwise this function could be renamed + commented to make more sense
+	- branch test/codecleanup/remove_delete_functions
+	- branch test/normalize_tmplrpl_command
+
+
+STACK

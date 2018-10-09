@@ -1,0 +1,11 @@
+===================================================================
+--- src/vehicle_gui_base.h	(revision 24056)
++++ src/vehicle_gui_base.h	(working copy)
+@@ -27,6 +27,7 @@
+ 	VehicleListIdentifier vli; ///< Identifier of the vehicle list we want to currently show.
+ 
+ 	enum ActionDropdownItem {
++		ADI_TEMPLATE_REPLACE,
+ 		ADI_REPLACE,
+ 		ADI_SERVICE,
+ 		ADI_DEPOT,

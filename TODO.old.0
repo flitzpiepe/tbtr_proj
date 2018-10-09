@@ -1,0 +1,83 @@
+
+updated:		2015-02-26
+cur version:	v0.5a
+next version:	v0.6
+
+TODO
+
+
+DONE
+	- hotfix: init template main window when called from a station gui (game used to crash)
+	- hotfix: don't check orders for virtual trains
+	- hotfix: regenerated project files to contain the new source file names (tbtr_*)
+	- merged with trunk 27171
+
+
+LATER
+	- replaceAllGui layout: row height is changing with window height
+	- reorganize template creation/editing
+		* either integrate it as extra edit-mode into the main gui
+		* or integrate the availVehList into the current edit window
+		:::::
+		Main UI:
+			- single click on tmpl:
+				activate/deactivate selection
+			- dragging click
+				move vehicles around inside template
+			- double click
+				opens availtrains window and lets append new vehicles
+	- drag-and-drop moving of template vehicles doesn't work very well
+	! game crash 0
+		Crash reason:
+		Signal:  Aborted (6)
+		Message: Assertion failed at line 535 of /home/streen/OpenTTD/openttd/src/tbtr_template_vehicle_func.cpp: new_head->IsPrimaryVehicle()
+		* it should not be possible to create a template where the leading vehicle is not a primary
+		* this was probably after reshuffling the template a bit (?)
+	- delivery script
+		* make clean
+		* config for release
+		* rebuild
+		* mv bin -> openttd
+		* tgz
+		* mv tgz -> ../releases
+	- cross compilation for windows
+		* add to delivery script
+	- code refactoring
+		- design + impl workflow for editing or creating a template train
+			* main gui shall be noticed correctly whenever a template has definitively changed
+				- notifying the main gui is done via given the child windows pointers to bools which are set by the child and checked by the parent
+			* main gui shall not rebuild the template list until that change has been confirmed
+				- currently, the list is being rebuilt constantly
+			* will require to reactivate the first line in ...vehicle_func::BuildTemplateGuiList
+			* write header file for main gui to allow children to call its specialized functions
+		- write header file for TemplateReplaceWindow
+			* child windows shall call functions from their parent in order to extract information or notify about progress
+			* e.g. create template shall be able to notify about a new template so that the template list can be rebuilt (instead of rebuilding it on every paint event)
+		- reuse new class BaseConsist for storing head-related stuff
+		- train_cmd.cpp:3748 :: Money calculateOverallValue(veh*)
+			* does there exist something like this for the new baseconsist class ?
+		- virtual void SetStringParameters(int widget) const;
+			* is used to calculate the min window size, should be updated to contain all necessary stuff
+		- normalize widget strings
+			* the form with enum {lotsa string_ids} is not used anymore (?)
+			* copy-paste code doesn't use this consistently either (?)
+
+	- display error message boxes
+		* when a template could not be cloned from an existing train
+		* when a template could not be cloned from some other tmpl
+
+	- add hotkey for main gui
+
+	- settings entry
+
+	? does tmpl rplcmt succeed if the action is to just remove some wagons but there is not enough money for a fully new train
+
+	- when a train is to be extended by adding only a wagon (e.g.), it seems like the cost for a completely new train are
+		considered, instead of only the actual update cost, this doesn't make sense
+
+	- in commit: cadfac9
+		* deleted a call to deleteAllTemplateReplacements with param -1 (group id, should be invalid)
+	
+	- rm debugging functions in _func.cpp
+		* pat, pav, ptv, pvt
+

@@ -1,0 +1,11 @@
+===================================================================
+--- src/saveload/saveload.h	(revision 24056)
++++ src/saveload/saveload.h	(working copy)
+@@ -83,6 +83,7 @@
+ 	REF_CARGO_PACKET  = 7, ///< Load/save a reference to a cargo packet.
+ 	REF_ORDERLIST     = 8, ///< Load/save a reference to an orderlist.
+ 	REF_STORAGE       = 9, ///< Load/save a reference to a persistent storage.
++	REF_TEMPLATE_VEHICLE = 10, ///< Load/save a reference to a template vehicle     // MYGUI
+ };
+ 
+ /** Highest possible savegame version. */

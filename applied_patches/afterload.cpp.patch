@@ -1,0 +1,13 @@
+===================================================================
+--- src/saveload/afterload.cpp	(revision 24056)
++++ src/saveload/afterload.cpp	(working copy)
+@@ -685,6 +685,9 @@
+ 	/* Update all vehicles */
+ 	AfterLoadVehicles(true);
+ 
++	// MYGUI
++	AfterLoadTemplateVehicles();
++
+ 	/* Make sure there is an AI attached to an AI company */
+ 	{
+ 		Company *c;

@@ -1,0 +1,44 @@
+===================================================================
+--- src/train.h	(revision 24056)
++++ src/train.h	(working copy)
+@@ -103,6 +103,9 @@
+ 	int GetDisplayImageWidth(Point *offset = NULL) const;
+ 	bool IsInDepot() const;
+ 	bool IsStoppedInDepot() const;
++	// MYGUI
++	Money CalculateCurrentOverallValue() const;
++	// ENDMYGUI
+ 	bool Tick();
+ 	void OnNewDay();
+ 	uint Crash(bool flooded = false);
+@@ -146,6 +149,13 @@
+ 		return v;
+ 	}
+ 
++	// MYGUI
++	inline Train *GetLastUnit() {
++		Train *tmp = this;
++		while ( tmp->GetNextUnit() ) tmp = tmp->GetNextUnit();
++		return tmp;
++	}
++
+ 	/**
+ 	 * Calculate the offset from this vehicle's center to the following center taking the vehicle lengths into account.
+ 	 * @return Offset from center to center.
+@@ -319,6 +329,16 @@
+ 	}
+ };
+ 
++
++// TODO
++CommandCost CmdBuildRailVehicle(TileIndex, DoCommandFlag, const Engine *, uint16, Vehicle**);
++CommandCost CmdMoveRailVehicle(TileIndex, DoCommandFlag , uint32, uint32, const char *);
++CommandCost CmdMoveVirtualRailVehicle(TileIndex, DoCommandFlag, uint32, uint32, const char*);
++
++Train* CmdBuildVirtualRailWagon(const Engine*);
++Train* CmdBuildVirtualRailVehicle(EngineID);
++CommandCost CmdSellRailWagon(DoCommandFlag, Vehicle*, uint16, uint32);
++
+ #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
+ 
+ #endif /* TRAIN_H */

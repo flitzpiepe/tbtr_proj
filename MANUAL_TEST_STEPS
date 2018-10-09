@@ -1,0 +1,23 @@
+
+ 0. check that exists:	trains UI :: Manage list :: Template Replacement
+
+ 1. check that exists:	any user group listed in Defined Groups
+
+ 2. define new templ
+
+ 3. edit ex. templ
+ 
+ 4. clone from train
+
+ 5. refit for cargo
+
+ 6. enable tmpl for group
+
+ 7. replacement
+
+ 8. save game
+
+ 9. load game - templ restored, group association restored
+
+
+
