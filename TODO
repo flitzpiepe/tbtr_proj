@@ -1,8 +1,51 @@
+
 updated:    2018-10-09
+
+
 TODO
+    * real_consist_length has been removed, wasn't used, can be removed when the patch has been
+      verified to be functional
+        tmp->First()->SetRealLength(CeilDiv(init_clicked->gcache.cached_total_length * 10, TILE_SIZE));
+    - check if Train* clicked is needed in TemplateVehicle::CloneFromTrain()
+    - TemplateVehicle::(prev|first) are not set, can probably be removed
+    ? rename all .h -> .hpp
+    - remove prev and first from TV
+
+FUNCTIONALITIES TO INTEGRATE
+    - list templates
+    - replace all vehicles in template
+    - template replacement
+    - list template details
+    - test TbtrGui::BuildTemplateList()
+        *(this->templates.Append()) = tv;
+    - tbtrgui should have the owner as member
+        - refactor all methods which get an Owner as parameter
+    ? needed, maybe rm
+        template_vehicle.h : TemplateID FindTemplateIndexForGroup(GroupID);
+
+
 STACK
-        - impl actual cloning
-        - clone template from train
-            - remaining code TODOs
-            - warnings
-            - retab
+    - clone template from train
+        * feat/clone_train_to_template
+        ? test
+
+
+PATCH FEATURES
+
+- train gui, extra menu point, manage list -> Template Replacement
+
+- gui: Template Replacement
+    - list groups
+    - list templates
+    - list train details for selected template
+    - set selected template options
+        - use veh in depot
+        - keep rems
+        - use refit
+
+- create new template train
+- edit existing template train
+- delete template train
+- replace all vehicles in a template train
+- start/stop replacing group's trains -> template train
+- select rail type for template replacement

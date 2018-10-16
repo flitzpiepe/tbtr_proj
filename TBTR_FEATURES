@@ -1,0 +1,19 @@
+patch features
+
+- train gui, extra menu point, manage list -> Template Replacement
+
+- gui: Template Replacement
+    - list groups
+    - list templates
+    - list train details for selected template
+    - set selected template options
+        - use veh in depot
+        - keep rems
+        - use refit
+
+- create new template train
+- edit existing template train
+- delete template train
+- replace all vehicles in a template train
+- start/stop replacing group's trains -> template train
+- select rail type for template replacement
