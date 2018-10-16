@@ -10,6 +10,8 @@ TODO
     - TemplateVehicle::(prev|first) are not set, can probably be removed
     ? rename all .h -> .hpp
     - remove prev and first from TV
+    - modifications in all files in list below
+        - check what the old patch modified in each file
 
 FUNCTIONALITIES TO INTEGRATE
     - list templates
@@ -49,3 +51,54 @@ PATCH FEATURES
 - replace all vehicles in a template train
 - start/stop replacing group's trains -> template train
 - select rail type for template replacement
+
+
+FILES MODIFIED BY THE PATCH 0.701
+
+    ects/openttd_vs100.vcxproj
+    ects/openttd_vs100.vcxproj.filters
+    ects/openttd_vs80.vcproj
+    ects/openttd_vs90.vcproj
+    ce.list
+    autoreplace_cmd.cpp
+    autoreplace_func.h
+    command.cpp
+    command_type.h
+    depot_gui.cpp
+    group_cmd.cpp
+    group_gui.cpp
+    lang/english.txt
+    newgrf.h
+    newgrf_engine.cpp
+    newgrf_spritegroup.cpp
+    order_cmd.cpp
+    saveload/afterload.cpp
+    saveload/saveload.cpp
+    saveload/saveload.h
+    saveload/saveload_internal.h
+    saveload/tbtr_template_replacement_sl.cpp
+    saveload/tbtr_template_veh_sl.cpp
+    tbtr_template_gui_create.cpp
+    tbtr_template_gui_create.h
+    tbtr_template_gui_create_virtualtrain.cpp
+    tbtr_template_gui_create_virtualtrain.h
+    tbtr_template_gui_main.cpp
+    tbtr_template_gui_main.h
+    tbtr_template_gui_replaceall.cpp
+    tbtr_template_gui_replaceall.h
+    tbtr_template_vehicle.cpp
+    tbtr_template_vehicle.h
+    tbtr_template_vehicle_func.cpp
+    tbtr_template_vehicle_func.h
+    train.h
+    train_cmd.cpp
+    vehicle.cpp
+    vehicle_base.h
+    vehicle_cmd.cpp
+    vehicle_gui.cpp
+    vehicle_gui.h
+    vehicle_gui_base.h
+    vehiclelist.cpp
+    viewport.cpp
+    widgets/build_vehicle_widget.h
+    window_type.h
