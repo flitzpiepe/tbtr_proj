@@ -1,5 +1,13 @@
 
-updated:    2018-10-09
+updated:    2018-10-17
+
+
+STACK
+	! does not link
+	- add debugging stuff on proj level
+    - clone template from train
+        * feat/clone_train_to_template
+        ? test
 
 
 TODO
@@ -24,12 +32,6 @@ FUNCTIONALITIES TO INTEGRATE
         - refactor all methods which get an Owner as parameter
     ? needed, maybe rm
         template_vehicle.h : TemplateID FindTemplateIndexForGroup(GroupID);
-
-
-STACK
-    - clone template from train
-        * feat/clone_train_to_template
-        ? test
 
 
 PATCH FEATURES
