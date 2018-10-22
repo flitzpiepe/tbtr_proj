@@ -1,15 +1,38 @@
 #include "tbtr_debug.h"
 
-void tbtrdbg::chain(const Vehicle* v)
+template <typename T>
+void tbtrdbg::chain(const T* v)
 {
-	if (!v) return;
-	std::cout << "\t" << v->engine_type << std::endl;
+	if (!v) {
+		std::cout << std::endl;
+		return;
+	}
+	std::cout << "\t" << v->index << ":" << v->engine_type;
 	chain(v->Next());
 }
 
-void tbtrdbg::vehicle(const Vehicle* v)
+template <typename T>
+void tbtrdbg::vehicle(const T* v)
 {
 	if (!v) return;
-	std::cout << "dbg veh: " << v->index << ", type: " << v->type << std::endl;
+	std::cout << "vehicle: " << v->index << ":" << v->type << std::endl;
 	chain(v);
+}
+
+void tbtrdbg::all_trains()
+{
+	Train* t;
+	FOR_ALL_TRAINS(t)
+	{
+		vehicle(t);
+	}
+}
+
+void tbtrdbg::all_templates()
+{
+	TemplateVehicle* tv;
+	FOR_ALL_TEMPLATES(tv)
+	{
+		vehicle(tv);
+	}
 }

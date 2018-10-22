@@ -1,16 +1,17 @@
 
-updated:    2018-10-17
+updated:    2018-10-23
 
 
 STACK
-	! does not link
-	- add debugging stuff on proj level
+	- test
     - clone template from train
         * feat/clone_train_to_template
-        ? test
+		- remove debugging
 
 
 TODO
+	- debugging
+		- use header-only libs
     * real_consist_length has been removed, wasn't used, can be removed when the patch has been
       verified to be functional
         tmp->First()->SetRealLength(CeilDiv(init_clicked->gcache.cached_total_length * 10, TILE_SIZE));

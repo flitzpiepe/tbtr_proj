@@ -16,6 +16,5 @@ fi
 sources=$base/tbtr_new/source.list
 if ! grep -q tbtr_debug.cpp $sources
 then
-	echo tbtr_debug.cpp >>$sources
+	sed -i -r 's/^(tbtr_template_vehicle.cpp)/\1\ntbtr_debug.cpp/' $sources
 fi
-
