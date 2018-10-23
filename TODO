@@ -3,7 +3,7 @@ updated:    2018-10-23
 
 
 STACK
-	- test
+	- list templates in gui
     - clone template from train
         * feat/clone_train_to_template
 		- remove debugging

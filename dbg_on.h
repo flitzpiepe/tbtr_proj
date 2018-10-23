@@ -8,11 +8,6 @@ cp $base/src/tbtr_debug.cpp $tbtr
 
 file=$tbtr/tbtr_template_vehicle.h
 
-if ! grep -q tbtr_debug.h $file
-then
-	sed -i -r 's/^(typedef uint32 TemplateID.*)/\1\n#include "tbtr_debug.h"/' $file
-fi
-
 sources=$base/tbtr_new/source.list
 if ! grep -q tbtr_debug.cpp $sources
 then
