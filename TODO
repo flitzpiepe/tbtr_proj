@@ -3,21 +3,14 @@ updated:    2018-10-28
 
 
 STACK
-	! wrong template id is set for a group (e.g. 1 for the second template, but it should be 4 because the
-	  first template already contains 4 vehicles)
-	! "template in use" is not shown for the second template in the list
-	- select template + group for replacement
-		- selected group + selected template need to be set onclick
 
 
 TODO
-	! template list is not correctly drawn when the gui is opened (existing templates are not displayed)
 	! group list is not updated when a new group is created
-	- saveload code needs to incorporate the new templateid for the groups
 	- calc # trains that still need replacement + update the main gui accordingly
 		* commented code still exists
     - check if Train* clicked is needed in TemplateVehicle::CloneFromTrain()
-    - TemplateVehicle::(prev|first) are not set, can probably be removed
+    ? remove TemplateVehicle::prev
     ? rename all .h -> .hpp
     - remove prev and first from TV
     - modifications in all files in list below
@@ -28,6 +21,7 @@ TODO
 		* because with cloning we cannot create such a template, will need to wait for the edit function
 	- see how ..._TMPLRPL_EX_DIFF_RAILTYPE was used in the old code and either reintegrate it or remove it
 	  from the lang file
+	? deal with parent groups
 
 FUNCTIONALITIES TO INTEGRATE
     - list templates
