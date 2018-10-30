@@ -4,6 +4,13 @@ updated:    2018-10-30
 
 STACK
 	! weird behaviour after gui rebuild
+		* delete first tmpl from gui
+			* both tmpls disappear from the gui
+			* both groups which used any tmpl are listed as using tmpl -1
+				* clicking a tmpl config option in that state will crash
+			? after cloning a train, it will appear exactly in the same place as the deleted one
+				* and group-tmpl assignments will be restored
+			* after gui reopen the tmpls will be listed again, one group is listed with the correct assignment again and the other is still listed with assigned tmpl -1
 	- feature: delete template
 		- reset group template assignment
 		- check if the nullptr check in the dtor is needed, it's not in the old code
