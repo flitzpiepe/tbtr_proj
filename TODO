@@ -1,9 +1,17 @@
 
-updated:    2018-10-29
+updated:    2018-10-30
 
 
 STACK
-	- do template replacement
+	- feature: delete template
+		- dtor
+		- reset group template assignment
+	- feature: do template replacement
+		* old functions + includes are defined in template_vehicle.cpp
+		? move all to a seperate file
+		? why do we need to forward-declare CmdMoveRailVehicle
+			- replace this direct call with DoCommandP(...)
+		- code TODOs
 
 
 TODO
