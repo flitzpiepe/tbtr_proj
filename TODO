@@ -3,9 +3,10 @@ updated:    2018-10-30
 
 
 STACK
+	! weird behaviour after gui rebuild
 	- feature: delete template
-		- dtor
 		- reset group template assignment
+		- check if the nullptr check in the dtor is needed, it's not in the old code
 	- feature: do template replacement
 		* old functions + includes are defined in template_vehicle.cpp
 		? move all to a seperate file
@@ -15,6 +16,8 @@ STACK
 
 
 TODO
+	? is it necessary to have the owner specified in the tbtr gui
+		* should be always the _local_company
 	! add missing documentation
 		- also review the comment for the CmdTemplateReplace function
 	- templatevehicle: remove or rename the bool methods (getters)
@@ -34,6 +37,9 @@ TODO
 		* because with cloning we cannot create such a template, will need to wait for the edit function
 	- see how ..._TMPLRPL_EX_DIFF_RAILTYPE was used in the old code and either reintegrate it or remove it
 	  from the lang file
+	? is TemplateVehicle::index really necessary
+		* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
+	...
 	? deal with parent groups
 
 FUNCTIONALITIES TO INTEGRATE
