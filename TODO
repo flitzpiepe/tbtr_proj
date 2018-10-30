@@ -1,12 +1,17 @@
 
-updated:    2018-10-28
+updated:    2018-10-29
 
 
 STACK
+	- do template replacement
 
 
 TODO
+	! add missing documentation
+		- also review the comment for the CmdTemplateReplace function
+	- templatevehicle: remove or rename the bool methods (getters)
 	! group list is not updated when a new group is created
+	! dtors not implemented
 	- calc # trains that still need replacement + update the main gui accordingly
 		* commented code still exists
     - check if Train* clicked is needed in TemplateVehicle::CloneFromTrain()
