@@ -3,17 +3,6 @@ updated:    2018-10-30
 
 
 STACK
-	! weird behaviour after gui rebuild
-		* delete first tmpl from gui
-			* both tmpls disappear from the gui
-			* both groups which used any tmpl are listed as using tmpl -1
-				* clicking a tmpl config option in that state will crash
-			? after cloning a train, it will appear exactly in the same place as the deleted one
-				* and group-tmpl assignments will be restored
-			* after gui reopen the tmpls will be listed again, one group is listed with the correct assignment again and the other is still listed with assigned tmpl -1
-	- feature: delete template
-		- reset group template assignment
-		- check if the nullptr check in the dtor is needed, it's not in the old code
 	- feature: do template replacement
 		* old functions + includes are defined in template_vehicle.cpp
 		? move all to a seperate file
@@ -23,6 +12,13 @@ STACK
 
 
 TODO
+	*** GUI is currently running with this->owner==_local_company
+		* watch out for possible side effects because this has never been the case before
+	- prevent multiple instances of the tbtr gui
+	- check when group + template list are being rebuilt
+		* TbtrGui::OnPaint doesn't rebuild the template list but rebuilds the groups list
+		* either both should be rebuilt or none
+		- check all occurrences of the rebuild funcs and see if they're needed everywhere
 	? is it necessary to have the owner specified in the tbtr gui
 		* should be always the _local_company
 	! add missing documentation
