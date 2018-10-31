@@ -12,6 +12,7 @@ STACK
 
 
 TODO
+	? disable autoreplacement if a template is assigned for the group
 	*** GUI is currently running with this->owner==_local_company
 		* watch out for possible side effects because this has never been the case before
 	- prevent multiple instances of the tbtr gui
