@@ -3,11 +3,41 @@ updated:    2018-10-30
 
 
 STACK
+	! crash during launch screen
+	? safe to use DCP only on user-initiated actions (gui clicks,...)
+	? DoCommand vs DoCommandP
+		- auto replace
+			* uses only DoCommand() in autoreplace_func.cpp
+			* uses DCP() when starting/stopping the auto replacement
+			* uses DCP() when changing a company setting
+	- procedure
+		- for each template
+			- find matching vehicle in incoming
+				- must match engine_id
+				- try to find one with matching refit
+				- of those, choose the one with the max. #cargo
+			- move to new chain
+			- OR get it from somewhere else
+				* depot
+				* buy
+			- sell the remainders
+			- OR neutralize the remainders
+				- sell remaining cargo
+			- copy all settings from old primary to new
+				* group
+				* orders
+				* launch maybe
 	- feature: do template replacement
+		- when building new vehicles use GetCmdBuildVehicle
+			- check for other GetCmd functions and apply them
 		* old functions + includes are defined in template_vehicle.cpp
+		- the check for the cost of the replacement should not be necessary, as DoCommand can test a command
+		  first
+		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		? move all to a seperate file
 		? why do we need to forward-declare CmdMoveRailVehicle
 			- replace this direct call with DoCommandP(...)
+		- test network sync
 		- code TODOs
 
 
