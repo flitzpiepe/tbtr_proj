@@ -3,13 +3,6 @@ updated:    2018-10-30
 
 
 STACK
-	! crash during launch screen
-	? safe to use DCP only on user-initiated actions (gui clicks,...)
-	? DoCommand vs DoCommandP
-		- auto replace
-			* uses only DoCommand() in autoreplace_func.cpp
-			* uses DCP() when starting/stopping the auto replacement
-			* uses DCP() when changing a company setting
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
@@ -39,9 +32,16 @@ STACK
 			- replace this direct call with DoCommandP(...)
 		- test network sync
 		- code TODOs
+		? move to separate files
+		- review/write all comments
 
 
 TODO
+	- test Template->Next() for
+		- articulated
+		- dual-headed
+		? maybe use GetNextUnit() for templates as well
+	- use DoCommandP for all user actions initiated from the GUI (OnClick(),...?)
 	*** GUI is currently running with this->owner==_local_company
 		* watch out for possible side effects because this has never been the case before
 	- prevent multiple instances of the tbtr gui
