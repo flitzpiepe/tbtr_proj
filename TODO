@@ -1,5 +1,5 @@
 
-updated:    2018-10-30
+updated:    2018-11-11
 
 
 STACK
@@ -21,6 +21,13 @@ STACK
 				* orders
 				* launch maybe
 	- feature: do template replacement
+		? reset stats for the old vehicle (neutralize status or somewhere else)
+			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
+			  will be doubled because it is also listed for the new one, this should skew some global
+			  statistics ...
+		- copyheadspecificthings could be moved to the vehicle class
+		- test in combination with autoreplacement
+		? is the train restarted correctly if it was not supposed to stop in the depot
 		- when building new vehicles use GetCmdBuildVehicle
 			- check for other GetCmd functions and apply them
 		* old functions + includes are defined in template_vehicle.cpp
@@ -37,6 +44,7 @@ STACK
 
 
 TODO
+	- show floating money cost numbers after a replacement
 	- test Template->Next() for
 		- articulated
 		- dual-headed
