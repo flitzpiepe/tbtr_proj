@@ -21,6 +21,8 @@ STACK
 				* orders
 				* launch maybe
 	- feature: do template replacement
+		- test: restart after replacement
+		- test: transfer cargo
 		? reset stats for the old vehicle (neutralize status or somewhere else)
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
 			  will be doubled because it is also listed for the new one, this should skew some global
