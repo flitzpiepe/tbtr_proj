@@ -3,6 +3,8 @@ updated:    2018-11-11
 
 
 STACK
+	! new chain is completely disassembled
+	- test cargo transferal
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
@@ -46,6 +48,9 @@ STACK
 
 
 TODO
+	! delete button doesn't work
+		* test case: 0 (UKRS2)
+	! main gui is not updated when a new group is created
 	- show floating money cost numbers after a replacement
 	- test Template->Next() for
 		- articulated
