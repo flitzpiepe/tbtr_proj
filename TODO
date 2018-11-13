@@ -3,8 +3,10 @@ updated:    2018-11-11
 
 
 STACK
-	! new chain is completely disassembled
-	- test cargo transferal
+	! tbtrdbg::all_templates doesn't list all templates
+	! wagons are not appended to the primary
+	- test: replacement where train stays the same
+	- test cargo transfer
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
@@ -29,6 +31,7 @@ STACK
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
 			  will be doubled because it is also listed for the new one, this should skew some global
 			  statistics ...
+		- template details are not listed in the gui
 		- copyheadspecificthings could be moved to the vehicle class
 		- test in combination with autoreplacement
 		? is the train restarted correctly if it was not supposed to stop in the depot
