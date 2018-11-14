@@ -1,12 +1,11 @@
 
-updated:    2018-11-11
+updated:    2018-11-14
 
 
 STACK
-	! tbtrdbg::all_templates doesn't list all templates
-	! wagons are not appended to the primary
-	- test: replacement where train stays the same
-	- test cargo transfer
+	- impl vehicle refit
+		* branch feat/refit_vehicle
+	- test vehicle refit
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
@@ -25,6 +24,10 @@ STACK
 				* orders
 				* launch maybe
 	- feature: do template replacement
+		- test cargo transfer
+		- refit should be optional
+		! stupid dbg lib doesn't work in gdb because it is a template that is never called
+			- check how to call function templates from gdb...
 		- test: restart after replacement
 		- test: transfer cargo
 		? reset stats for the old vehicle (neutralize status or somewhere else)
