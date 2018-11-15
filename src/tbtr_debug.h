@@ -15,7 +15,7 @@
 #include "train.h"
 #include "vehicle_base.h"
 
-namespace tbtrdbg
+namespace td
 {
 	template<typename T>
 	void chain(const T* v)
@@ -50,7 +50,8 @@ namespace tbtrdbg
 		TemplateVehicle* tv;
 		FOR_ALL_TEMPLATES(tv)
 		{
-			vehicle(tv);
+			if (tv->first == tv)
+				vehicle(tv);
 		}
 	}
 }
