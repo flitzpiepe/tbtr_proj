@@ -1,11 +1,10 @@
 
-updated:    2018-11-14
+updated:    2018-11-15
 
 
 STACK
-	- impl vehicle refit
-		* branch feat/refit_vehicle
-	- test vehicle refit
+	(! GDB 8.2: call function templates from gdb?? breakpoints keep being enabled across compilations)
+	- refit refactoring
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
@@ -24,7 +23,10 @@ STACK
 				* orders
 				* launch maybe
 	- feature: do template replacement
-		- test cargo transfer
+		- test: different refits in wagons in incoming, shall be rearranged by template, cargo must not be deleted due to refitting
+		- refactor all "Type *var"
+		! test vehicle refit
+			!? cargo_subtype vs subtype
 		- refit should be optional
 		! stupid dbg lib doesn't work in gdb because it is a template that is never called
 			- check how to call function templates from gdb...

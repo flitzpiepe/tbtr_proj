@@ -1,7 +1,9 @@
 #! /bin/sh
 
 base=~/code/openttd
-src=tbtr/src
+tbtr=tbtr
+[[ -f $base/src/.tbtr_base ]] && tbtr=$(cat $base/src/.tbtr_base)
+src=$tbtr/src
 tags=tags
 
 cd $base
