@@ -3,8 +3,7 @@ updated:    2018-11-15
 
 
 STACK
-	(! GDB 8.2: call function templates from gdb?? breakpoints keep being enabled across compilations)
-	- refit refactoring
+	! refit command gives success 0 when the cargo_subtype is 0
 	- procedure
 		- for each template
 			- find matching vehicle in incoming

@@ -17,23 +17,46 @@
 
 namespace td
 {
-	template<typename T>
-	void chain(const T* v)
+	void v(Train*);
+	void v(TemplateVehicle*);
+
+	void v(TemplateVehicle* t)
 	{
-		if (!v) {
-			std::cout << std::endl;
-			return;
+		if ( !t ) return;
+
+		if (t->first == t)
+		{
+			std::cout << "template: (ix):" << t->index << std::endl;
+			v(t->Next());
 		}
-		std::cout << "\t" << v->index << ":" << v->engine_type;
-		chain(v->Next());
+
+		std::cout << "  ix:" << t->index
+			<< "  e:" << t->engine_type
+			<< "  ty:" << t->type
+			<< "  st:" << t->subtype
+			<< "  ct:" << t->cargo_type
+			<< "  cs:" << t->cargo_subtype
+			<< std::endl;
 	}
 
-	template <typename T>
-	void vehicle(const T* v)
+	void v(Train* t)
 	{
-		if (!v) return;
-		std::cout << "vehicle: " << v->index << ":" << v->type << std::endl;
-		chain(v);
+		if ( !t ) return;
+
+		if (t->First() == t)
+		{
+			std::cout << "train: (ix):" << t->index << "  (unit):" << t->unitnumber << std::endl;
+			v(t->Next());
+		}
+
+		std::cout << "  ix:" << t->index
+			<< "  e:" << t->engine_type
+			<< "  ty:" << t->type
+			<< "  st:" << t->subtype
+			<< "  ct:" << t->cargo_type
+			<< "  cs:" << t->cargo_subtype
+			<< "  ca:" << t->cargo.TotalCount()
+			<< std::endl;
 	}
 
 	void all_trains()
@@ -41,7 +64,7 @@ namespace td
 		Train* t;
 		FOR_ALL_TRAINS(t)
 		{
-			vehicle(t);
+			v(t);
 		}
 	}
 
@@ -51,7 +74,7 @@ namespace td
 		FOR_ALL_TEMPLATES(tv)
 		{
 			if (tv->first == tv)
-				vehicle(tv);
+				v(tv);
 		}
 	}
 }
