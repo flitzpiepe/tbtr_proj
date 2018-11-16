@@ -17,26 +17,22 @@
 
 namespace td
 {
-	void v(Train*);
-	void v(TemplateVehicle*);
-
 	void v(TemplateVehicle* t)
 	{
 		if ( !t ) return;
 
 		if (t->first == t)
-		{
 			std::cout << "template: (ix):" << t->index << std::endl;
-			v(t->Next());
-		}
 
 		std::cout << "  ix:" << t->index
 			<< "  e:" << t->engine_type
 			<< "  ty:" << t->type
-			<< "  st:" << t->subtype
-			<< "  ct:" << t->cargo_type
-			<< "  cs:" << t->cargo_subtype
+			<< "  st:" << (short)(t->subtype)
+			<< "  ct:" << (short)(t->cargo_type)
+			<< "  cs:" << (short)(t->cargo_subtype)
 			<< std::endl;
+
+		v(t->Next());
 	}
 
 	void v(Train* t)
@@ -44,19 +40,18 @@ namespace td
 		if ( !t ) return;
 
 		if (t->First() == t)
-		{
 			std::cout << "train: (ix):" << t->index << "  (unit):" << t->unitnumber << std::endl;
-			v(t->Next());
-		}
 
 		std::cout << "  ix:" << t->index
 			<< "  e:" << t->engine_type
 			<< "  ty:" << t->type
-			<< "  st:" << t->subtype
-			<< "  ct:" << t->cargo_type
-			<< "  cs:" << t->cargo_subtype
+			<< "  st:" << (short)(t->subtype)
+			<< "  ct:" << (short)(t->cargo_type)
+			<< "  cs:" << (short)(t->cargo_subtype)
 			<< "  ca:" << t->cargo.TotalCount()
 			<< std::endl;
+
+		v(t->Next());
 	}
 
 	void all_trains()
@@ -64,7 +59,8 @@ namespace td
 		Train* t;
 		FOR_ALL_TRAINS(t)
 		{
-			v(t);
+			if (t->First() == t)
+				v(t);
 		}
 	}
 
