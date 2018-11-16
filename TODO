@@ -3,7 +3,13 @@ updated:    2018-11-15
 
 
 STACK
-	! refit command gives success 0 when the cargo_subtype is 0
+	! the missing item is CmdSellLandArea
+	! command.cpp: we have 124 CommandProc defs but the _command_proc_table has only 123
+	! GetRefitCmd returns CmdSendVehicleToDepot
+		* index is off by 1
+	! refit command gives success 0
+		* during flags==DC_NONE the refit command will have sucess==false
+		* refit will work anyways
 	- procedure
 		- for each template
 			- find matching vehicle in incoming
