@@ -3,64 +3,30 @@ updated:    2018-11-15
 
 
 STACK
-	! the missing item is CmdSellLandArea
-	! command.cpp: we have 124 CommandProc defs but the _command_proc_table has only 123
-	! GetRefitCmd returns CmdSendVehicleToDepot
-		* index is off by 1
-	! refit command gives success 0
-		* during flags==DC_NONE the refit command will have sucess==false
-		* refit will work anyways
-	- procedure
-		- for each template
-			- find matching vehicle in incoming
-				- must match engine_id
-				- try to find one with matching refit
-				- of those, choose the one with the max. #cargo
-			- move to new chain
-			- OR get it from somewhere else
-				* depot
-				* buy
-			- sell the remainders
-			- OR neutralize the remainders
-				- sell remaining cargo
-			- copy all settings from old primary to new
-				* group
-				* orders
-				* launch maybe
 	- feature: do template replacement
 		- test: different refits in wagons in incoming, shall be rearranged by template, cargo must not be deleted due to refitting
 		- refactor all "Type *var"
-		! test vehicle refit
-			!? cargo_subtype vs subtype
-		- refit should be optional
-		! stupid dbg lib doesn't work in gdb because it is a template that is never called
-			- check how to call function templates from gdb...
-		- test: restart after replacement
-		- test: transfer cargo
 		? reset stats for the old vehicle (neutralize status or somewhere else)
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
 			  will be doubled because it is also listed for the new one, this should skew some global
 			  statistics ...
-		- template details are not listed in the gui
-		- copyheadspecificthings could be moved to the vehicle class
+		? copyheadspecificthings could be moved to the vehicle class
 		- test in combination with autoreplacement
-		? is the train restarted correctly if it was not supposed to stop in the depot
-		- when building new vehicles use GetCmdBuildVehicle
-			- check for other GetCmd functions and apply them
-		* old functions + includes are defined in template_vehicle.cpp
 		- the check for the cost of the replacement should not be necessary, as DoCommand can test a command
 		  first
 		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
-		? move all to a seperate file
+		? move all to a separate file
 		? why do we need to forward-declare CmdMoveRailVehicle
-			- replace this direct call with DoCommandP(...)
+			- replace this direct call with DoCommand(...)
 		- test network sync
 		- code TODOs
-		? move to separate files
 		- review/write all comments
 
 
 TODO
+	- template details are not listed in the gui
+	? clone from existing template
+		* could be useful when the editing is available or just to set other options
 	! delete button doesn't work
 		* test case: 0 (UKRS2)
 	! main gui is not updated when a new group is created
