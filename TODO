@@ -1,10 +1,17 @@
 
-updated:    2018-11-15
+updated:    2018-11-17
 
 
 STACK
+	* cargo created:
+		* station_cmd.cpp:3698:
+			ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id), next);
+		* gdb: CargoPacket::CargoPacket (this=0x555557d798e0, source=0, source_xy=8383, count=28, source_type=ST_INDUSTRY, source_id=3)
+		    at /home/streen/code/openttd/tbtr/src/cargopacket.cpp:55
+	? how to create fake cargo packets directly inside a train
+		* when the cargo.amount is increased just like that, the game will crash quickly
+	- test: different refits in wagons in incoming, shall be rearranged by template, cargo must not be deleted due to refitting
 	- feature: do template replacement
-		- test: different refits in wagons in incoming, shall be rearranged by template, cargo must not be deleted due to refitting
 		- refactor all "Type *var"
 		? reset stats for the old vehicle (neutralize status or somewhere else)
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
