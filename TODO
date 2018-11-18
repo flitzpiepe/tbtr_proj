@@ -3,14 +3,6 @@ updated:    2018-11-17
 
 
 STACK
-	* cargo created:
-		* station_cmd.cpp:3698:
-			ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id), next);
-		* gdb: CargoPacket::CargoPacket (this=0x555557d798e0, source=0, source_xy=8383, count=28, source_type=ST_INDUSTRY, source_id=3)
-		    at /home/streen/code/openttd/tbtr/src/cargopacket.cpp:55
-	? how to create fake cargo packets directly inside a train
-		* when the cargo.amount is increased just like that, the game will crash quickly
-	- test: different refits in wagons in incoming, shall be rearranged by template, cargo must not be deleted due to refitting
 	- feature: do template replacement
 		- refactor all "Type *var"
 		? reset stats for the old vehicle (neutralize status or somewhere else)
@@ -31,6 +23,10 @@ STACK
 
 
 TODO
+	- template options stored in group instead of template
+		* in order to configure each template replacement indiviually, without the need of a new template each
+		  time
+		- display template replacement options in group row
 	- template details are not listed in the gui
 	? clone from existing template
 		* could be useful when the editing is available or just to set other options
