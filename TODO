@@ -4,25 +4,42 @@ updated:    2018-11-17
 
 STACK
 	- feature: do template replacement
-		- refactor all "Type *var"
+		- test: vehicle is bought in one step and then found in a later step during Find*InDepot()
+		- test: reuse depot vehicles
+		- test: sell remainders
+			? cargo
+			? cost
+		- test in combination with autoreplacement
+		- test network sync
+		- check if all replacement costs are added up and returned
 		? reset stats for the old vehicle (neutralize status or somewhere else)
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
 			  will be doubled because it is also listed for the new one, this should skew some global
 			  statistics ...
 		? copyheadspecificthings could be moved to the vehicle class
-		- test in combination with autoreplacement
 		- the check for the cost of the replacement should not be necessary, as DoCommand can test a command
 		  first
 		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		? move all to a separate file
-		? why do we need to forward-declare CmdMoveRailVehicle
-			- replace this direct call with DoCommand(...)
-		- test network sync
-		- code TODOs
-		- review/write all comments
+		- check all loops and ifs in this file for {} convention ... -.-
+		- both findIn[...] functions (find template in train/depot):
+			// TODO bad scenario
+			// 	all vehicles have 0 cargo
+			// 	one is selected because of correct engine type
+			// 	later veh also fits AND has matching refit, too
+			// 		--> but will not be selected because its cargo isn't greater than that of the original one
+			// TODO should we prefer vehicles with 0 cargo? who knows whether it will fit the vehicle's current orders ...
+
+
 
 
 TODO
+	! code TODOs
+	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
+	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
+		? use the command functions to do this simulation
+		- cache the total cost in the template itself
+			- cached_total_cost
 	- template options stored in group instead of template
 		* in order to configure each template replacement indiviually, without the need of a new template each
 		  time
