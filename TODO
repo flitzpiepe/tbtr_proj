@@ -5,7 +5,6 @@ updated:    2018-11-17
 STACK
 	- feature: do template replacement
 		- test: vehicle is bought in one step and then found in a later step during Find*InDepot()
-		- test: reuse depot vehicles
 		- test: sell remainders
 			? cargo
 			? cost
