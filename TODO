@@ -4,18 +4,25 @@ updated:    2018-11-20
 
 STACK
 	- feature: do template replacement
+		- test: all subcosts are added up, some steps might fail
+			- remove the temporaries afterwards
+			! replacement fails
+				- the new command costs will probably have to be added only if flags==DC_EXEC, at least in part
+					- check which ones
 		- test: vehicle is bought in one step and then found in a later step during Find*InDepot()
 		- test: sell remainders
 			? cargo
 			? cost
 		- test in combination with autoreplacement
 		- test network sync
-		- check if all replacement costs are added up and returned
+		! if a replacement fails, the incoming should at least restart (if it was about to restart anyway)
+		! test effects of a failed replacement
+			- reduced money
+			- changed vehicles
 		? reset stats for the old vehicle (neutralize status or somewhere else)
 			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
 			  will be doubled because it is also listed for the new one, this should skew some global
 			  statistics ...
-		? copyheadspecificthings could be moved to the vehicle class
 		- the check for the cost of the replacement should not be necessary, as DoCommand can test a command
 		  first
 		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
