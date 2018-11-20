@@ -4,11 +4,6 @@ updated:    2018-11-20
 
 STACK
 	- feature: do template replacement
-		- test: all subcosts are added up, some steps might fail
-			- remove the temporaries afterwards
-			! replacement fails
-				- the new command costs will probably have to be added only if flags==DC_EXEC, at least in part
-					- check which ones
 		* tc_0: lots of mixed cargo
 		* tc_1: simple replacement, dual-head
 		- test: sell remainders
