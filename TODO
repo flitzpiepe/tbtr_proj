@@ -9,7 +9,8 @@ STACK
 			! replacement fails
 				- the new command costs will probably have to be added only if flags==DC_EXEC, at least in part
 					- check which ones
-		- test: vehicle is bought in one step and then found in a later step during Find*InDepot()
+		* tc_0: lots of mixed cargo
+		* tc_1: simple replacement, dual-head
 		- test: sell remainders
 			? cargo
 			? cost

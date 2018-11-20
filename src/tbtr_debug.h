@@ -30,6 +30,7 @@ namespace td
 			<< "  st:" << (short)(t->subtype)
 			<< "  ct:" << (short)(t->cargo_type)
 			<< "  cs:" << (short)(t->cargo_subtype)
+			<< "  " << t
 			<< std::endl;
 
 		v(t->Next());
@@ -49,6 +50,7 @@ namespace td
 			<< "  ct:" << (short)(t->cargo_type)
 			<< "  cs:" << (short)(t->cargo_subtype)
 			<< "  ca:" << t->cargo.TotalCount()
+			<< "  " << t
 			<< std::endl;
 
 		v(t->Next());
