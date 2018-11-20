@@ -1,5 +1,5 @@
 
-updated:    2018-11-17
+updated:    2018-11-20
 
 
 STACK
@@ -21,6 +21,7 @@ STACK
 		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		? move all to a separate file
 		- check all loops and ifs in this file for {} convention ... -.-
+		! compilation warnings
 		- both findIn[...] functions (find template in train/depot):
 			// TODO bad scenario
 			// 	all vehicles have 0 cargo
