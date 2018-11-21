@@ -3,15 +3,19 @@ updated:    2018-11-20
 
 
 STACK
+	! we set a property in the replacement map, instead of starting the vehicle
+	! if a replacement fails, the incoming should at least restart (if it was about to restart anyway)
+		- tests (4)
+		- TODO in vehicle.cpp
 	- feature: do template replacement
 		* tc_0: lots of mixed cargo
 		* tc_1: simple replacement, dual-head
 		- test: sell remainders
+			! is missing a nullptr check for incoming
 			? cargo
 			? cost
 		- test in combination with autoreplacement
 		- test network sync
-		! if a replacement fails, the incoming should at least restart (if it was about to restart anyway)
 		! test effects of a failed replacement
 			- reduced money
 			- changed vehicles
@@ -23,8 +27,7 @@ STACK
 		  first
 		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		? move all to a separate file
-		- check all loops and ifs in this file for {} convention ... -.-
-		! compilation warnings
+		- check all loops and ifs in this file for {} convention
 		- both findIn[...] functions (find template in train/depot):
 			// TODO bad scenario
 			// 	all vehicles have 0 cargo
