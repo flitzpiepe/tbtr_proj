@@ -3,34 +3,8 @@ updated:    2018-11-22
 
 
 STACK
-	- copied:
-		* BaseConsist::CopyConsistPropertiesFrom
-			* this->current_order_time = src->current_order_time;
-			* this->lateness_counter = src->lateness_counter;
-			* this->timetable_start = src->timetable_start;
-
-			* this->service_interval = src->service_interval;
-
-			* this->cur_real_order_index = src->cur_real_order_index;
-			* this->cur_implicit_order_index = src->cur_implicit_order_index;
-
-			* if (HasBit(src->vehicle_flags, VF_TIMETABLE_STARTED)) SetBit(this->vehicle_flags, VF_TIMETABLE_STARTED);
-			* if (HasBit(src->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(this->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			* if (HasBit(src->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) SetBit(this->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
-			* if (HasBit(src->vehicle_flags, VF_SERVINT_IS_PERCENT) != HasBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT)) {
-			* 	ToggleBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT);
-			* }
-			* if (HasBit(src->vehicle_flags, VF_SERVINT_IS_CUSTOM)) SetBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM);
-		* this->unitnumber = src->unitnumber;
-		* this->current_order = src->current_order;
-		* this->dest_tile  = src->dest_tile;
-		* this->profit_this_year = src->profit_this_year;
-		* this->profit_last_year = src->profit_last_year;
-	? reset stats for the old vehicle (neutralize status or somewhere else)
-		* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
-			will be doubled because it is also listed for the new one, this should skew some global
-			statistics ...
 	- feature: do template replacement
+		- test all template options
 		- test network sync
 			* console command debuglevel has a setting desync
 		? move all to a separate file
