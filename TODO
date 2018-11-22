@@ -1,23 +1,39 @@
 
-updated:    2018-11-20
+updated:    2018-11-22
 
 
 STACK
-	- test: sell remainders
-		? cargo
+	- copied:
+		* BaseConsist::CopyConsistPropertiesFrom
+			* this->current_order_time = src->current_order_time;
+			* this->lateness_counter = src->lateness_counter;
+			* this->timetable_start = src->timetable_start;
+
+			* this->service_interval = src->service_interval;
+
+			* this->cur_real_order_index = src->cur_real_order_index;
+			* this->cur_implicit_order_index = src->cur_implicit_order_index;
+
+			* if (HasBit(src->vehicle_flags, VF_TIMETABLE_STARTED)) SetBit(this->vehicle_flags, VF_TIMETABLE_STARTED);
+			* if (HasBit(src->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(this->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			* if (HasBit(src->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) SetBit(this->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+			* if (HasBit(src->vehicle_flags, VF_SERVINT_IS_PERCENT) != HasBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT)) {
+			* 	ToggleBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT);
+			* }
+			* if (HasBit(src->vehicle_flags, VF_SERVINT_IS_CUSTOM)) SetBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM);
+		* this->unitnumber = src->unitnumber;
+		* this->current_order = src->current_order;
+		* this->dest_tile  = src->dest_tile;
+		* this->profit_this_year = src->profit_this_year;
+		* this->profit_last_year = src->profit_last_year;
+	? reset stats for the old vehicle (neutralize status or somewhere else)
+		* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
+			will be doubled because it is also listed for the new one, this should skew some global
+			statistics ...
 	- feature: do template replacement
-		* tc_0: lots of mixed cargo
-		* tc_1: simple replacement, dual-head
-		- test in combination with autoreplacement
 		- test network sync
 			* console command debuglevel has a setting desync
-		? reset stats for the old vehicle (neutralize status or somewhere else)
-			* copying the stats into the new vehicle is a bit weird, it means that the profit from a vehicle
-			  will be doubled because it is also listed for the new one, this should skew some global
-			  statistics ...
-		- incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		? move all to a separate file
-		- check all loops and ifs in this file for {} convention
 		- both findIn[...] functions (find template in train/depot):
 			// TODO bad scenario
 			// 	all vehicles have 0 cargo
@@ -30,6 +46,18 @@ STACK
 
 
 TODO
+	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
+		- ask somebody if its necessary
+	- check all loops and ifs in this file for {} convention
+	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
+		- allow scheduling of both
+		- move tbtr before autorpl in callvehticks
+		? prevent autorepl for a train if tbtr succeeded
+			* e.g. by removing it from the mapping
+	- scheduling of tbtr
+		- check if group of train has a template
+		- check if train already matches the template
+		- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
 	! code TODOs
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
 	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more

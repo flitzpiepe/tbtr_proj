@@ -11,7 +11,7 @@ fi
 log=$base/src/fetch.log
 remote=bb
 dosleep=2
-ret=0
+ret=1
 
 echo fetch base: $base
 cd $base
