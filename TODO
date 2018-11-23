@@ -3,11 +3,14 @@ updated:    2018-11-22
 
 
 STACK
+	! doesn't work, refit is always used
+	- test refit
+	- test all template options
 	- feature: do template replacement
-		- test all template options
 		- test network sync
 			* console command debuglevel has a setting desync
 		? move all to a separate file
+			- or at least reorder the functions in the file to keep TemplateVehicle::* seperate from the rest
 		- both findIn[...] functions (find template in train/depot):
 			// TODO bad scenario
 			// 	all vehicles have 0 cargo
@@ -20,6 +23,7 @@ STACK
 
 
 TODO
+	! crash when setting a tmpl option without a tmpl selected
 	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		- ask somebody if its necessary
 	- check all loops and ifs in this file for {} convention
