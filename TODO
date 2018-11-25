@@ -1,28 +1,15 @@
 
-updated:    2018-11-22
+updated:    2018-11-25
 
 
 STACK
-	! doesn't work, refit is always used
-	- test refit
-	- test all template options
 	- feature: do template replacement
 		- test network sync
 			* console command debuglevel has a setting desync
-		? move all to a separate file
-			- or at least reorder the functions in the file to keep TemplateVehicle::* seperate from the rest
-		- both findIn[...] functions (find template in train/depot):
-			// TODO bad scenario
-			// 	all vehicles have 0 cargo
-			// 	one is selected because of correct engine type
-			// 	later veh also fits AND has matching refit, too
-			// 		--> but will not be selected because its cargo isn't greater than that of the original one
-			// TODO should we prefer vehicles with 0 cargo? who knows whether it will fit the vehicle's current orders ...
-
-
 
 
 TODO
+	- replace // comments by /* */
 	! crash when setting a tmpl option without a tmpl selected
 	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		- ask somebody if its necessary
@@ -37,6 +24,7 @@ TODO
 		- check if train already matches the template
 		- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
 	! code TODOs
+	- check for unused functions
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
 	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
 		? use the command functions to do this simulation
