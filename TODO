@@ -3,6 +3,8 @@ updated:    2018-11-25
 
 
 STACK
+	! main gui is not updated when a new group is created
+		* search for WC_TEMPLATEGUI_MAIN in group*
 
 
 TODO
@@ -12,7 +14,6 @@ TODO
 	? deal with parent groups
     - disabled code in void TbtrGui::DrawGroups(const Rect& r) const to list #trains that need replacement
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
-	! main gui is not updated when a new group is created
 	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		- ask somebody if its necessary
 	- test Template->Next() for
