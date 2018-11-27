@@ -3,17 +3,22 @@ updated:    2018-11-25
 
 
 STACK
-	- feature: do template replacement
-		- test network sync
-			* console command debuglevel has a setting desync
 
 
 TODO
-	- replace // comments by /* */
-	! crash when setting a tmpl option without a tmpl selected
+	- feature: do template replacement
+		- test network sync
+			* console command debuglevel has a setting desync
+	? deal with parent groups
+    - disabled code in void TbtrGui::DrawGroups(const Rect& r) const to list #trains that need replacement
+	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
+	! main gui is not updated when a new group is created
 	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
 		- ask somebody if its necessary
-	- check all loops and ifs in this file for {} convention
+	- test Template->Next() for
+		- articulated
+		- dual-headed
+		? maybe use GetNextUnit() for templates as well
 	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
 		- allow scheduling of both
 		- move tbtr before autorpl in callvehticks
@@ -23,32 +28,29 @@ TODO
 		- check if group of train has a template
 		- check if train already matches the template
 		- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
-	! code TODOs
-	- check for unused functions
-	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
+	- clone from existing template
+		? what happens right now when doing this
+		* could be useful when the editing is available or just to set other options
+	! template details are not listed in the gui
+
+    ? all header includes into cpp files
+	? template options stored in group instead of template
+		* in order to configure each template replacement indiviually, without the need of a new template each
+		  time
+		- display template replacement options in group row
+	- show floating money cost numbers after a replacement
+	- use DoCommandP for all user actions initiated from the GUI (OnClick(),...?)
 	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
 		? use the command functions to do this simulation
 		- cache the total cost in the template itself
 			- cached_total_cost
-	- template options stored in group instead of template
-		* in order to configure each template replacement indiviually, without the need of a new template each
-		  time
-		- display template replacement options in group row
-	- template details are not listed in the gui
-	? clone from existing template
-		* could be useful when the editing is available or just to set other options
-	! delete button doesn't work
-		* test case: 0 (UKRS2)
-	! main gui is not updated when a new group is created
-	- show floating money cost numbers after a replacement
-	- test Template->Next() for
-		- articulated
-		- dual-headed
-		? maybe use GetNextUnit() for templates as well
-	- use DoCommandP for all user actions initiated from the GUI (OnClick(),...?)
 	*** GUI is currently running with this->owner==_local_company
 		* watch out for possible side effects because this has never been the case before
 	- prevent multiple instances of the tbtr gui
+
+    !! normalize whitespace everywhere
+	- check all loops and ifs in this file for {} convention
+	- check for unused functions
 	- check when group + template list are being rebuilt
 		* TbtrGui::OnPaint doesn't rebuild the template list but rebuilds the groups list
 		* either both should be rebuilt or none
@@ -59,15 +61,12 @@ TODO
 		- also review the comment for the CmdTemplateReplace function
 	- templatevehicle: remove or rename the bool methods (getters)
 	! group list is not updated when a new group is created
-	! dtors not implemented
 	- calc # trains that still need replacement + update the main gui accordingly
 		* commented code still exists
     - check if Train* clicked is needed in TemplateVehicle::CloneFromTrain()
     ? remove TemplateVehicle::prev
     ? rename all .h -> .hpp
     - remove prev and first from TV
-    - modifications in all files in list below
-        - check what the old patch modified in each file
 	- impl macro: for all templates from->to
 		* e.g.: TbtrGui::DrawTemplates
 	- untested: warning string for free-wagon-chains
@@ -77,7 +76,6 @@ TODO
 	? is TemplateVehicle::index really necessary
 		* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
 	...
-	? deal with parent groups
 
 FUNCTIONALITIES TO INTEGRATE
     - list templates
