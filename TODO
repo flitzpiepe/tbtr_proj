@@ -3,9 +3,6 @@ updated:    2018-11-28
 
 
 STACK
-	! count is wrong, counts all train parts
-    - disabled code in void TbtrGui::DrawGroups(const Rect& r) const to list #trains that need replacement
-		 - refactor code
 
 
 TODO
