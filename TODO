@@ -3,12 +3,13 @@ updated:    2018-11-28
 
 
 STACK
-
-
-TODO
+	- test to call the replacement via docomp, veh.cpp:1107
+	! desync on template replacement
 	- feature: do template replacement
 		- test network sync
 			* console command debuglevel has a setting desync
+
+TODO
 	? deal with parent groups
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
 	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
