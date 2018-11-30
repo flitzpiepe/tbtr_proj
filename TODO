@@ -3,17 +3,23 @@ updated:    2018-11-28
 
 
 STACK
-	- test to call the replacement via docomp, veh.cpp:1107
 	! desync on template replacement
+		- store/restore random seeds
+		- check ownership of incoming, see autoreplace
 	- feature: do template replacement
 		- test network sync
 			* console command debuglevel has a setting desync
 
 TODO
+	- feat: hotkey for the tbtr gui
+		* branch feat/hotkey_maingui
+		! doesn't work
+		* replacing the key with 'L' (landscaping hotkey) didn't work either
+	- failed replacements should return CMD_ERROR or something
+		- e.g.: incoming==NULL
+	- prevent tmpl repl if a veh is crashed, status & VS_CRASHED
 	? deal with parent groups
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
-	? incorporate "SavedRandomSeeds saved_seeds;" from autoreplace_cmd.cpp:713
-		- ask somebody if its necessary
 	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
 		- allow scheduling of both
 		- move tbtr before autorpl in callvehticks
