@@ -3,14 +3,17 @@ updated:    2018-11-28
 
 
 STACK
+	- DoCommandP for all user options
+		- clone template
+		- delete template
 	! desync on template replacement
-		- store/restore random seeds
-		- check ownership of incoming, see autoreplace
+		- document all command functions
 	- feature: do template replacement
 		- test network sync
 			* console command debuglevel has a setting desync
 
 TODO
+	- normalize {} convention for switch-case
 	- feat: hotkey for the tbtr gui
 		* branch feat/hotkey_maingui
 		! doesn't work
