@@ -19,6 +19,12 @@ TODO
 		* branch feat/hotkey_maingui
 		! doesn't work
 		* replacing the key with 'L' (landscaping hotkey) didn't work either
+		! tbtr hotkey is not defined in the main window
+		! there is also a hotkey.cfg in the . dir
+		* callstack for the tbtr hotkey is
+			(gdb) bt
+			#0  MainToolbarWindow::OnHotkey (this=0x5555577781f0, hotkey=0) at /home/streen/code/openttd/tbtr_new/src/toolbar_gui.cpp:2031
+			#1  0x0000555555d59b96 in HandleKeypress (keycode=33, key=0) at /home/streen/code/openttd/tbtr_new/src/window.cpp:2672
 	- failed replacements should return CMD_ERROR or something
 		- e.g.: incoming==NULL
 	- prevent tmpl repl if a veh is crashed, status & VS_CRASHED
