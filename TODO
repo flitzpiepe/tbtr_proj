@@ -13,22 +13,36 @@ STACK
 		- test network sync
 			* console command debuglevel has a setting desync
 
-TODO
-	- normalize {} convention for switch-case
+STACK initial window line-height (resize step height)
+	* when TbtrGui->FinishInitNested() is called, the resize->step_height is at 13
+	* during Window::InitializeData()
+	* is set for the group gui during FinishInitNested()
+	- set correct step_height
 	- feat: hotkey for the tbtr gui
 		* branch feat/hotkey_maingui
 		! doesn't work
 		* replacing the key with 'L' (landscaping hotkey) didn't work either
 		! tbtr hotkey is not defined in the main window
 		! there is also a hotkey.cfg in the . dir
+		- hotkey T works, when it is removed from the global hotkeys
+		- added ctrl+e for the gui, must be added to the check for the hotkey in toolbar_gui
+		? how to add a hotkey to the cfg by default
 		* callstack for the tbtr hotkey is
 			(gdb) bt
 			#0  MainToolbarWindow::OnHotkey (this=0x5555577781f0, hotkey=0) at /home/streen/code/openttd/tbtr_new/src/toolbar_gui.cpp:2031
 			#1  0x0000555555d59b96 in HandleKeypress (keycode=33, key=0) at /home/streen/code/openttd/tbtr_new/src/window.cpp:2672
+
+TODO
 	- failed replacements should return CMD_ERROR or something
 		- e.g.: incoming==NULL
 	- prevent tmpl repl if a veh is crashed, status & VS_CRASHED
 	? deal with parent groups
+    !! normalize whitespace everywhere
+		- after merging all current branches
+
+
+LATER
+	- normalize {} convention for switch-case
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
 	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
 		- allow scheduling of both
@@ -39,20 +53,17 @@ TODO
 		- check if group of train has a template
 		- check if train already matches the template
 		- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
-	! template details are not listed in the gui
 	- the selected group index should be updated to stick with the current group if another group is added or removed
 		- same for the templates list
 	- clone from existing template
 		? what happens right now when doing this
 		* could be useful when the editing is available or just to set other options
-
     ? all header includes into cpp files
 	? template options stored in group instead of template
 		* in order to configure each template replacement indiviually, without the need of a new template each
 		  time
 		- display template replacement options in group row
 	- show floating money cost numbers after a replacement
-	- use DoCommandP for all user actions initiated from the GUI (OnClick(),...?)
 	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
 		? use the command functions to do this simulation
 		- cache the total cost in the template itself
@@ -60,8 +71,6 @@ TODO
 	*** GUI is currently running with this->owner==_local_company
 		* watch out for possible side effects because this has never been the case before
 	- prevent multiple instances of the tbtr gui
-
-    !! normalize whitespace everywhere
 	- check all loops and ifs in this file for {} convention
 	- check for unused functions
 	- check when group + template list are being rebuilt
@@ -73,10 +82,8 @@ TODO
 	! add missing documentation
 		- also review the comment for the CmdTemplateReplace function
 	- templatevehicle: remove or rename the bool methods (getters)
-	! group list is not updated when a new group is created
 	- calc # trains that still need replacement + update the main gui accordingly
 		* commented code still exists
-    - check if Train* clicked is needed in TemplateVehicle::CloneFromTrain()
     ? remove TemplateVehicle::prev
     ? rename all .h -> .hpp
     - remove prev and first from TV
@@ -86,6 +93,7 @@ TODO
 		* because with cloning we cannot create such a template, will need to wait for the edit function
 	- see how ..._TMPLRPL_EX_DIFF_RAILTYPE was used in the old code and either reintegrate it or remove it
 	  from the lang file
+	- compute the line_height for the tbtr gui, without this being an external param
 	? is TemplateVehicle::index really necessary
 		* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
 	...
