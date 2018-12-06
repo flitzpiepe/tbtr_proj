@@ -17,13 +17,8 @@
 
 namespace td
 {
-	void v(TemplateVehicle* t)
+	void sv(TemplateVehicle* t)
 	{
-		if ( !t ) return;
-
-		if (t->first == t)
-			std::cout << "template: (ix):" << t->index << std::endl;
-
 		std::cout << "  ix:" << t->index
 			<< "  e:" << t->engine_type
 			<< "  ty:" << t->type
@@ -32,6 +27,16 @@ namespace td
 			<< "  cs:" << (short)(t->cargo_subtype)
 			<< "  " << t
 			<< std::endl;
+	}
+
+	void v(TemplateVehicle* t)
+	{
+		if ( !t ) return;
+
+		if (t->first == t)
+			std::cout << "template: (ix):" << t->index << std::endl;
+
+		sv(t);
 
 		v(t->Next());
 	}
@@ -66,13 +71,22 @@ namespace td
 		}
 	}
 
-	void all_templates()
+	void all_template_chains()
 	{
 		TemplateVehicle* tv;
 		FOR_ALL_TEMPLATES(tv)
 		{
 			if (tv->first == tv)
 				v(tv);
+		}
+	}
+
+	void all_templates()
+	{
+		TemplateVehicle* tv;
+		FOR_ALL_TEMPLATES(tv)
+		{
+			sv(tv);
 		}
 	}
 }

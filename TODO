@@ -3,10 +3,6 @@ updated:    2018-11-28
 
 
 STACK
-	! crash when deleting a template in multiplayer
-		! the template list still has 1 item after the tmpl is removed
-		* crashes also when no other player has joined
-		* SP is ok
 	- DoCommandP for all user options
 		- document all command functions
 	- feature: do template replacement
