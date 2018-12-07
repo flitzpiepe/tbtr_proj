@@ -9,29 +9,9 @@ STACK
 		- test network sync
 			* console command debuglevel has a setting desync
 
-STACK initial window line-height (resize step height)
-	* when TbtrGui->FinishInitNested() is called, the resize->step_height is at 13
-	* during Window::InitializeData()
-	* is set for the group gui during FinishInitNested()
-	- set correct step_height
-	- feat: hotkey for the tbtr gui
-		* branch feat/hotkey_maingui
-		! doesn't work
-		* replacing the key with 'L' (landscaping hotkey) didn't work either
-		! tbtr hotkey is not defined in the main window
-		! there is also a hotkey.cfg in the . dir
-		- hotkey T works, when it is removed from the global hotkeys
-		- added ctrl+e for the gui, must be added to the check for the hotkey in toolbar_gui
-		? how to add a hotkey to the cfg by default
-		* callstack for the tbtr hotkey is
-			(gdb) bt
-			#0  MainToolbarWindow::OnHotkey (this=0x5555577781f0, hotkey=0) at /home/streen/code/openttd/tbtr_new/src/toolbar_gui.cpp:2031
-			#1  0x0000555555d59b96 in HandleKeypress (keycode=33, key=0) at /home/streen/code/openttd/tbtr_new/src/window.cpp:2672
-
 TODO
 	- failed replacements should return CMD_ERROR or something
 		- e.g.: incoming==NULL
-	- prevent tmpl repl if a veh is crashed, status & VS_CRASHED
 	? deal with parent groups
     !! normalize whitespace everywhere
 		- after merging all current branches
