@@ -1,5 +1,5 @@
 
-updated:    2018-11-28
+updated:    2018-12-10
 
 
 STACK
@@ -10,11 +10,7 @@ STACK
 			* console command debuglevel has a setting desync
 
 TODO
-	- failed replacements should return CMD_ERROR or something
-		- e.g.: incoming==NULL
 	? deal with parent groups
-    !! normalize whitespace everywhere
-		- after merging all current branches
 
 
 LATER
