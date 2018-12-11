@@ -1,16 +1,15 @@
 
-updated:    2018-12-10
+updated:    2018-12-11
 
 
 STACK
-	- DoCommandP for all user options
-		- document all command functions
+	* savegame: tbtr.sav
 	- feature: do template replacement
 		- test network sync
 			* console command debuglevel has a setting desync
 
 TODO
-	? deal with parent groups
+	- remove tbtr_debug.h includes
 
 
 LATER
@@ -68,6 +67,7 @@ LATER
 	- compute the line_height for the tbtr gui, without this being an external param
 	? is TemplateVehicle::index really necessary
 		* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
+	? deal with parent groups
 	...
 
 FUNCTIONALITIES TO INTEGRATE
