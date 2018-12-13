@@ -1,12 +1,9 @@
 
-updated:    2018-12-11
+updated:    2018-12-13
 
 
 STACK
-	* savegame: tbtr.sav
-	- feature: do template replacement
-		- test network sync
-			* console command debuglevel has a setting desync
+
 
 TODO
 	- remove tbtr_debug.h includes
