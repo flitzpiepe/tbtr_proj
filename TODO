@@ -1,8 +1,16 @@
 
-updated:    2018-12-13
+updated:    2018-12-14
 
 
 STACK
+	- other idea:
+		- add another parameter "build_template" to the actual build window
+		- when it's true, get the tbtr gui by id, get the selected template and
+		  build a new template which is appended in the according row
+	! build error, cannot use base class ctor if the base class is only known via foward decl
+	- inherit from buildvehwindow
+	- create template
+		- keeps a tmpl ptr internally for the new tmpl, which is used to append tmpl veh as long as the window is open
 
 
 TODO
@@ -10,6 +18,7 @@ TODO
 
 
 LATER
+	- rename all TRW_WIDGET_TMPL_ elements
 	- normalize {} convention for switch-case
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
 	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
