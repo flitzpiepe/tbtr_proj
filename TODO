@@ -3,7 +3,13 @@ updated:    2018-12-14
 
 
 STACK
+	- test: when a template is created, create a temp train object, get its image + width and delete the train
+	  again...
+	- lots of problems finding the custom sprite id for an engine...
+	- draw templates by using DrawVehicleEngine()
+	! don't have the spritenum for the engine
 	- other idea:
+		* disabled code in build_vehicle_gui.cpp:1327
 		- add another parameter "build_template" to the actual build window
 		- when it's true, get the tbtr gui by id, get the selected template and
 		  build a new template which is appended in the according row
