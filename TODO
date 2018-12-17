@@ -11,6 +11,18 @@ STACK
 			- img, can be retrieved from the engine
 			? how to get the display width for the gui
 				? the only thing really unkown is the cached vehicle length in gcache.cached_veh_length
+					* train_cmd:450
+						return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
+					* train_cmd:217
+						u->gcache.cached_veh_length = veh_len;
+						veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
+						veh_len = GetVehicleProperty(u, PROP_TRAIN_SHORTEN_FACTOR, CALLBACK_FAILED);
+						* newgrf_engine:1094
+							return GetEngineProperty(v->engine_type, property, orig_value, v);
+							??? needs another f**** vehicle
+							-> will need the vehicleresolverobj again
+			-> check the spritegroup header
+				* engine contains a spritegroup struct or something
 	- test
 	- new train needs to have the correct engine
 	- use a temp train
