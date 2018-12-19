@@ -1,8 +1,20 @@
 
-updated:    2018-12-14
+updated:    2018-12-19
 
 
 STACK
+	- cache sprite + width for each template, rm unneeded attrs
+		! initialization doesn't work from the ctor and during the drawing loop the tv obj is const...
+		? why does the order have to be this way
+	- create template
+		- ensure scrolling for long templates
+		- gui components
+			- edit selected template or create a new one
+			- button: build -> append new template vehicle
+			? free drag and drop between existing templates
+		- ensure template sanity
+
+OLD STACK
 	! fails when calling the new operator
 		* but is not a good idea anyways because some extra steps are done in the cmd_build function which would need
 		  to be replicated anyway
