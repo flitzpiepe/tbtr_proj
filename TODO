@@ -1,59 +1,27 @@
 
-updated:    2018-12-19
+updated:    2018-12-20
 
 
 STACK
-	- cache sprite + width for each template, rm unneeded attrs
-		! initialization doesn't work from the ctor and during the drawing loop the tv obj is const...
-		? why does the order have to be this way
+	- new engines widget
+		- fix engine drawing position
+		- draw all engines in the list
+		- add scrollbar
+		- filter engines which are to be considered
+		- make engine selectable
+		- add button "add engine"
+		- either rename MATRIX_NEW_ENGINES or the other 2
 	- create template
-		- ensure scrolling for long templates
 		- gui components
 			- edit selected template or create a new one
 			- button: build -> append new template vehicle
 			? free drag and drop between existing templates
+				? or just for the selected template
+			- ensure horiz scrolling for long templates
 		- ensure template sanity
+		- caching of the vehicle sprite width is complicated
+			! initialization doesn't work from the ctor and during the drawing loop the tv obj is const...
 
-OLD STACK
-	! fails when calling the new operator
-		* but is not a good idea anyways because some extra steps are done in the cmd_build function which would need
-		  to be replicated anyway
-		? maybe missing necessary steps can be reimplemented for the templates specifically
-			- add articulated parts (can be retrieved from the engine obj)
-			- img, can be retrieved from the engine
-			? how to get the display width for the gui
-				? the only thing really unkown is the cached vehicle length in gcache.cached_veh_length
-					* train_cmd:450
-						return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
-					* train_cmd:217
-						u->gcache.cached_veh_length = veh_len;
-						veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
-						veh_len = GetVehicleProperty(u, PROP_TRAIN_SHORTEN_FACTOR, CALLBACK_FAILED);
-						* newgrf_engine:1094
-							return GetEngineProperty(v->engine_type, property, orig_value, v);
-							??? needs another f**** vehicle
-							-> will need the vehicleresolverobj again
-			-> check the spritegroup header
-				* engine contains a spritegroup struct or something
-	- test
-	- new train needs to have the correct engine
-	- use a temp train
-	- create template
-		- keeps a tmpl ptr internally for the new tmpl, which is used to append tmpl veh as long as the window is open
-		- tests
-			- inherit from veh build gui
-				! currently not possible, no header file
-				- test: add header for the class
-				- test: add boolean member to say whether it should build a train or template
-			- draw vehicle engine/template with storing the image given by a train
-				! too complicated...
-					- test: when a template is created, create a temp train object, get its image + width and delete the train
-					again...
-					- lots of problems finding the custom sprite id for an engine...
-					- draw templates by using DrawVehicleEngine()
-					! don't have the spritenum for the engine
-			- use a temp train 
-				* should fail since too many infos are initialized only during the build command
 
 
 TODO
