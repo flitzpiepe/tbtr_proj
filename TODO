@@ -3,10 +3,8 @@ updated:    2018-12-20
 
 
 STACK
+	! not all engines are drawn
 	- new engines widget
-		- fix engine drawing position
-		- draw all engines in the list
-		- add scrollbar
 		- filter engines which are to be considered
 		- make engine selectable
 		- add button "add engine"
