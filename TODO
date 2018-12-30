@@ -1,13 +1,9 @@
 
-updated:    2018-12-28
+updated:    2018-12-30
 
 
 STACK
-	- sort: first locos, then wagons
-	! engines are not filtered
 	- new engines widget
-		! engines overlap in the gui
-		- make engine selectable
 		- add button "add engine"
 		- either rename MATRIX_NEW_ENGINES or the other 2
 	- create template
@@ -17,6 +13,9 @@ STACK
 			? free drag and drop between existing templates
 				? or just for the selected template
 			- ensure horiz scrolling for long templates
+			! last cell is displayed with double height which snaps into the correct size once the UI is
+			  resized
+			! engines are left-aligned instead of centered (like in the "new vehicles" gui)
 		- ensure template sanity
 		- caching of the vehicle sprite width is complicated
 			! initialization doesn't work from the ctor and during the drawing loop the tv obj is const...
