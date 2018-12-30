@@ -3,6 +3,8 @@ updated:    2018-12-30
 
 
 STACK
+	- need an (up-to-date) last-pointer on each template to be able to append a new tv
+	- add selected engine to a template
 	- new engines widget
 		- add button "add engine"
 		- either rename MATRIX_NEW_ENGINES or the other 2
@@ -28,6 +30,7 @@ TODO
 
 
 LATER
+	? why is there no separate header for the cmd functions
 	- rename all TRW_WIDGET_TMPL_ elements
 	- normalize {} convention for switch-case
 	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
