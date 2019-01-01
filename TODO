@@ -4,10 +4,17 @@ updated:    2018-12-30
 
 STACK
 	- need an (up-to-date) last-pointer on each template to be able to append a new tv
+		- add ptr
+		- set/upd during clone
+		- set during game load
 	- add selected engine to a template
+		- need to set some values that are normally copied from a train
+			- see CloneFromTrain() for a list of values
+			- real_length is set in tbtr_template_cmd.cpp:~493
 	- new engines widget
 		- add button "add engine"
 		- either rename MATRIX_NEW_ENGINES or the other 2
+		- add a label on top
 	- create template
 		- gui components
 			- edit selected template or create a new one
@@ -27,6 +34,9 @@ STACK
 
 TODO
 	- remove tbtr_debug.h includes
+	- check the allocation checks when cloning a template from a train
+		* tbtr..._cmd.cpp:486 has one check, but this is only for one vehicle
+		* there should be more checks when subsequent TVs are created for the rest of the train
 
 
 LATER
