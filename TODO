@@ -3,6 +3,8 @@ updated:    2018-12-30
 
 
 STACK
+	! cmd function is not being called
+	- add the new engine to the chain
 	- need an (up-to-date) last-pointer on each template to be able to append a new tv
 		- add ptr
 		- set/upd during clone
