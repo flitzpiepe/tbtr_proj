@@ -4,6 +4,18 @@ updated:    2019-01-02
 
 STACK
 	- update all template values from the selected engine
+		- this->engine_type = train->engine_type;
+			e->type
+		- this->subtype = train->subtype;
+		- this->railtype = train->railtype;
+		- this->cargo_type = train->cargo_type;
+		- this->cargo_subtype = train->cargo_subtype;
+		- this->cargo_cap = train->cargo_cap;
+		- const GroundVehicleCache* gcache = train->GetGroundVehicleCache();
+		- this->max_speed = train->GetDisplayMaxSpeed();
+		- this->power = gcache->cached_power;
+		- this->weight = gcache->cached_weight;
+		- this->max_te = gcache->cached_max_te / 1000;
 	- need an (up-to-date) last-pointer on each template to be able to append a new tv
 		- add ptr
 		- set/upd during clone
@@ -17,6 +29,12 @@ STACK
 		- either rename MATRIX_NEW_ENGINES or the other 2
 		- add a label on top
 	- create template
+		! articulated parts are not added when an engine is added to a template
+			- test: ignore all artic + multiheaded parts
+				* branch: test/ignore_artic_parts
+				- test: applying a template
+				- test: clone a multiheaded train
+					* othermultiheadedpart is not included in the template
 		- gui components
 			- edit selected template or create a new one
 			- button: build -> append new template vehicle
