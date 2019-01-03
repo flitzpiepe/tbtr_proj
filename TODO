@@ -1,34 +1,16 @@
 
-updated:    2019-01-02
+updated:    2019-01-03
 
 
 STACK
-	- update all template values from the selected engine
-		- this->engine_type = train->engine_type;
-			e->type
-		- this->subtype = train->subtype;
-		- this->railtype = train->railtype;
-		- this->cargo_type = train->cargo_type;
-		- this->cargo_subtype = train->cargo_subtype;
-		- this->cargo_cap = train->cargo_cap;
-		- const GroundVehicleCache* gcache = train->GetGroundVehicleCache();
-		- this->max_speed = train->GetDisplayMaxSpeed();
-		- this->power = gcache->cached_power;
-		- this->weight = gcache->cached_weight;
-		- this->max_te = gcache->cached_max_te / 1000;
-	- need an (up-to-date) last-pointer on each template to be able to append a new tv
-		- add ptr
-		- set/upd during clone
-		- set during game load
-	- add selected engine to a template
-		- need to set some values that are normally copied from a train
-			- see CloneFromTrain() for a list of values
-			- real_length is set in tbtr_template_cmd.cpp:~493
+	- need to set the correct subtype for new engines
 	- new engines widget
-		- add button "add engine"
 		- either rename MATRIX_NEW_ENGINES or the other 2
 		- add a label on top
 	- create template
+		! values not being set when adding a new engine
+			- subtype
+			- real_length (should be used when drawing the train length in the gui)
 		! articulated parts are not added when an engine is added to a template
 			- test: ignore all artic + multiheaded parts
 				* branch: test/ignore_artic_parts
@@ -59,6 +41,10 @@ TODO
 
 
 LATER
+	! TemplateVehicle::ContainsRailType(...)
+		? is it used
+		? is the railtype attr used anywhere
+		! the check ignores monorail and maglev types
 	? why is there no separate header for the cmd functions
 	- rename all TRW_WIDGET_TMPL_ elements
 	- normalize {} convention for switch-case
