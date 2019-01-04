@@ -1,15 +1,15 @@
 
-updated:    2019-01-03
+updated:    2019-01-04
 
 
 STACK
-	- need to set the correct subtype for new engines
-	- new engines widget
-		- either rename MATRIX_NEW_ENGINES or the other 2
-		- add a label on top
 	- create template
-		! values not being set when adding a new engine
+		- test for multiheaded engines + artic wagons
+			- display
 			- subtype
+			- composition rules
+			- replacement
+		! values not being set when adding a new engine
 			- real_length (should be used when drawing the train length in the gui)
 		! articulated parts are not added when an engine is added to a template
 			- test: ignore all artic + multiheaded parts
@@ -18,8 +18,7 @@ STACK
 				- test: clone a multiheaded train
 					* othermultiheadedpart is not included in the template
 		- gui components
-			- edit selected template or create a new one
-			- button: build -> append new template vehicle
+			! selected engine highlighting works only after resizing the gui (?)
 			? free drag and drop between existing templates
 				? or just for the selected template
 			- ensure horiz scrolling for long templates
@@ -27,13 +26,15 @@ STACK
 			  resized
 			! engines are left-aligned instead of centered (like in the "new vehicles" gui)
 		- ensure template sanity
-		- caching of the vehicle sprite width is complicated
-			! initialization doesn't work from the ctor and during the drawing loop the tv obj is const...
 		- code TODOs
 
 
 
 TODO
+	! normalize the {} style for switch case in tbtr_gui
+		? everywhere
+		? also for the other constructs
+	! inset for the template info pane is using the wrong text
 	- remove tbtr_debug.h includes
 	- check the allocation checks when cloning a template from a train
 		* tbtr..._cmd.cpp:486 has one check, but this is only for one vehicle
@@ -41,6 +42,12 @@ TODO
 
 
 LATER
+	- text strings
+		- check for all string definitions with TBTR, if they are actually used somewhere
+		- normalize their names
+	- template deletion
+		- after delete, select the next template in line, if any
+		- button: delete all templates
 	! TemplateVehicle::ContainsRailType(...)
 		? is it used
 		? is the railtype attr used anywhere
