@@ -3,30 +3,20 @@ updated:    2019-01-04
 
 
 STACK
-	- calc length for a single engine
-		? use train_cmd.cpp:205
-	! values not being set when adding a new engine
-		- real_length (should be used when drawing the train length in the gui)
 	- create template
 		- test for multiheaded engines + artic wagons
 			- display
 			- subtype
 			- composition rules
 			- replacement
-		! articulated parts are not added when an engine is added to a template
-			- test: ignore all artic + multiheaded parts
-				* branch: test/ignore_artic_parts
-				- test: applying a template
-				- test: clone a multiheaded train
-					* othermultiheadedpart is not included in the template
 		- gui components
-			! selected engine highlighting works only after resizing the gui (?)
 			? free drag and drop between existing templates
 				? or just for the selected template
 			- ensure horiz scrolling for long templates
+				! crash when the template is too long
 			! last cell is displayed with double height which snaps into the correct size once the UI is
 			  resized
-			! engines are left-aligned instead of centered (like in the "new vehicles" gui)
+			- engines are left-aligned instead of centered (like in the "new vehicles" gui)
 		- ensure template sanity
 		- code TODOs
 
@@ -44,6 +34,12 @@ TODO
 
 
 LATER
+	- calc length for a single engine
+		* branch test/store_length
+		* length is stored for each template and the sum is calculated for the head of the chain
+		* code reused from train_cmd.cpp:205
+		! calculated length is off by ~50%
+			* the actual calculation involves actual vehicle pointers which are used in some callbacks
 	- text strings
 		- check for all string definitions with TBTR, if they are actually used somewhere
 		- normalize their names
