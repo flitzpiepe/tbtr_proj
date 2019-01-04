@@ -3,14 +3,16 @@ updated:    2019-01-04
 
 
 STACK
+	- calc length for a single engine
+		? use train_cmd.cpp:205
+	! values not being set when adding a new engine
+		- real_length (should be used when drawing the train length in the gui)
 	- create template
 		- test for multiheaded engines + artic wagons
 			- display
 			- subtype
 			- composition rules
 			- replacement
-		! values not being set when adding a new engine
-			- real_length (should be used when drawing the train length in the gui)
 		! articulated parts are not added when an engine is added to a template
 			- test: ignore all artic + multiheaded parts
 				* branch: test/ignore_artic_parts
