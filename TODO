@@ -4,25 +4,33 @@ updated:    2019-01-04
 
 STACK
 	- create template
-		- test for multiheaded engines + artic wagons
-			- display
-			- subtype
-			- composition rules
-			- replacement
 		- gui components
 			? free drag and drop between existing templates
 				? or just for the selected template
+			? button delete last vehicle of a template chain
 			- ensure horiz scrolling for long templates
 				! crash when the template is too long
 			! last cell is displayed with double height which snaps into the correct size once the UI is
 			  resized
 			- engines are left-aligned instead of centered (like in the "new vehicles" gui)
-		- ensure template sanity
+			? add engine info panel
 		- code TODOs
 
 
 
 TODO
+	- ensure a sane template composition
+		- testbuy a template
+			* impossible, cannot test-buy and test-move the non-existing chain members at the same time
+			* branch test/testbuy_template
+		- inherit from Train
+			* train is final, don't know if it's a good idea to change this
+			* TVs would draw from the pool of vehicles
+			- need to make sure that TVs
+				- don't influence any vehicle statistics
+				- don't appear in any other group, window, ...
+				- buying or moving them doesn't cost any money
+		- don't do anything and hope that the player will create valid templates
 	! normalize the {} style for switch case in tbtr_gui
 		? everywhere
 		? also for the other constructs
