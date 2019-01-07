@@ -3,11 +3,12 @@ updated:    2019-01-07
 
 
 STACK
-	- prevent drawing a templ engine if it's out of gui bounds
-		* branch feat/horizonal_scroll
+	- TemplateVehicle
+		? image_width needed anywhere
+		? in Init(), can the sprite_width be calculated without the temporary
 	- setup scrollbar capacity
-		* branch set_hscroll_cap
-		gui:713
+		- minimal size: defined by gui dimensions, as it is now
+		- otherwise: determined by the longest available template
 	- ensure horiz scrolling for long templates
 		! crash when the template is too long
 	- create template
