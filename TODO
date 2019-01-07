@@ -1,15 +1,20 @@
 
-updated:    2019-01-04
+updated:    2019-01-07
 
 
 STACK
+	- prevent drawing a templ engine if it's out of gui bounds
+		* branch feat/horizonal_scroll
+	- setup scrollbar capacity
+		* branch set_hscroll_cap
+		gui:713
+	- ensure horiz scrolling for long templates
+		! crash when the template is too long
 	- create template
 		- gui components
 			? free drag and drop between existing templates
 				? or just for the selected template
 			? button delete last vehicle of a template chain
-			- ensure horiz scrolling for long templates
-				! crash when the template is too long
 			! last cell is displayed with double height which snaps into the correct size once the UI is
 			  resized
 			- engines are left-aligned instead of centered (like in the "new vehicles" gui)
