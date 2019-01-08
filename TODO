@@ -3,28 +3,22 @@ updated:    2019-01-08
 
 
 STACK
-		! doesn't work at the moment, see last commit
-			- the scrollbar cap seems to be correct but when it is scrolled, the vehicles are only shown from the beginning of the chain, not from the starting position of the scrollbar
-		- setup scrollbar capacity
-			- minimal size: defined by gui dimensions, as it is now
-			- otherwise: determined by the longest available template
-			- test with artic engines
-		- ensure horiz scrolling for long templates
-			! crash when the template is too long
 		- create template
 			- gui components
 				? free drag and drop between existing templates
 					? or just for the selected template
 				? button delete last vehicle of a template chain
 				! last cell is displayed with double height which snaps into the correct size once the UI is
-				resized
-				- engines are left-aligned instead of centered (like in the "new vehicles" gui)
+				  resized
 				? add engine info panel
+			! the selected engine is often not highlighted
 			- code TODOs
 
 
 
 	TODO
+		- add comments
+			- missing for some methods in tbtrgui
 		- rm TemplateVehicle::image_width
 		- ensure a sane template composition
 			- testbuy a template
@@ -49,12 +43,7 @@ STACK
 
 
 	LATER
-		- calc length for a single engine
-			* branch test/store_length
-			* length is stored for each template and the sum is calculated for the head of the chain
-			* code reused from train_cmd.cpp:205
-			! calculated length is off by ~50%
-				* the actual calculation involves actual vehicle pointers which are used in some callbacks
+		- deleting a template should put the selection on the next available one
 		- text strings
 			- check for all string definitions with TBTR, if they are actually used somewhere
 			- normalize their names
