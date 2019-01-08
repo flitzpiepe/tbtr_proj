@@ -1,189 +1,190 @@
 
-updated:    2019-01-07
+updated:    2019-01-08
 
 
 STACK
-	- TemplateVehicle
-		? image_width needed anywhere
-		? in Init(), can the sprite_width be calculated without the temporary
-	- setup scrollbar capacity
-		- minimal size: defined by gui dimensions, as it is now
-		- otherwise: determined by the longest available template
-	- ensure horiz scrolling for long templates
-		! crash when the template is too long
-	- create template
-		- gui components
-			? free drag and drop between existing templates
-				? or just for the selected template
-			? button delete last vehicle of a template chain
-			! last cell is displayed with double height which snaps into the correct size once the UI is
-			  resized
-			- engines are left-aligned instead of centered (like in the "new vehicles" gui)
-			? add engine info panel
-		- code TODOs
+		! doesn't work at the moment, see last commit
+			- the scrollbar cap seems to be correct but when it is scrolled, the vehicles are only shown from the beginning of the chain, not from the starting position of the scrollbar
+		- setup scrollbar capacity
+			- minimal size: defined by gui dimensions, as it is now
+			- otherwise: determined by the longest available template
+			- test with artic engines
+		- ensure horiz scrolling for long templates
+			! crash when the template is too long
+		- create template
+			- gui components
+				? free drag and drop between existing templates
+					? or just for the selected template
+				? button delete last vehicle of a template chain
+				! last cell is displayed with double height which snaps into the correct size once the UI is
+				resized
+				- engines are left-aligned instead of centered (like in the "new vehicles" gui)
+				? add engine info panel
+			- code TODOs
 
 
 
-TODO
-	- ensure a sane template composition
-		- testbuy a template
-			* impossible, cannot test-buy and test-move the non-existing chain members at the same time
-			* branch test/testbuy_template
-		- inherit from Train
-			* train is final, don't know if it's a good idea to change this
-			* TVs would draw from the pool of vehicles
-			- need to make sure that TVs
-				- don't influence any vehicle statistics
-				- don't appear in any other group, window, ...
-				- buying or moving them doesn't cost any money
-		- don't do anything and hope that the player will create valid templates
-	! normalize the {} style for switch case in tbtr_gui
-		? everywhere
-		? also for the other constructs
-	! inset for the template info pane is using the wrong text
-	- remove tbtr_debug.h includes
-	- check the allocation checks when cloning a template from a train
-		* tbtr..._cmd.cpp:486 has one check, but this is only for one vehicle
-		* there should be more checks when subsequent TVs are created for the rest of the train
+	TODO
+		- rm TemplateVehicle::image_width
+		- ensure a sane template composition
+			- testbuy a template
+				* impossible, cannot test-buy and test-move the non-existing chain members at the same time
+				* branch test/testbuy_template
+			- inherit from Train
+				* train is final, don't know if it's a good idea to change this
+				* TVs would draw from the pool of vehicles
+				- need to make sure that TVs
+					- don't influence any vehicle statistics
+					- don't appear in any other group, window, ...
+					- buying or moving them doesn't cost any money
+			- don't do anything and hope that the player will create valid templates
+		! normalize the {} style for switch case in tbtr_gui
+			? everywhere
+			? also for the other constructs
+		! inset for the template info pane is using the wrong text
+		- remove tbtr_debug.h includes
+		- check the allocation checks when cloning a template from a train
+			* tbtr..._cmd.cpp:486 has one check, but this is only for one vehicle
+			* there should be more checks when subsequent TVs are created for the rest of the train
 
 
-LATER
-	- calc length for a single engine
-		* branch test/store_length
-		* length is stored for each template and the sum is calculated for the head of the chain
-		* code reused from train_cmd.cpp:205
-		! calculated length is off by ~50%
-			* the actual calculation involves actual vehicle pointers which are used in some callbacks
-	- text strings
-		- check for all string definitions with TBTR, if they are actually used somewhere
-		- normalize their names
-	- template deletion
-		- after delete, select the next template in line, if any
-		- button: delete all templates
-	! TemplateVehicle::ContainsRailType(...)
-		? is it used
-		? is the railtype attr used anywhere
-		! the check ignores monorail and maglev types
-	? why is there no separate header for the cmd functions
-	- rename all TRW_WIDGET_TMPL_ elements
-	- normalize {} convention for switch-case
-	- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
-	- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
-		- allow scheduling of both
-		- move tbtr before autorpl in callvehticks
-		? prevent autorepl for a train if tbtr succeeded
-			* e.g. by removing it from the mapping
-	- scheduling of tbtr
-		- check if group of train has a template
-		- check if train already matches the template
-		- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
-	- the selected group index should be updated to stick with the current group if another group is added or removed
-		- same for the templates list
-	- clone from existing template
-		? what happens right now when doing this
-		* could be useful when the editing is available or just to set other options
-    ? all header includes into cpp files
-	? template options stored in group instead of template
-		* in order to configure each template replacement indiviually, without the need of a new template each
-		  time
-		- display template replacement options in group row
-	- show floating money cost numbers after a replacement
-	- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
-		? use the command functions to do this simulation
-		- cache the total cost in the template itself
-			- cached_total_cost
-	*** GUI is currently running with this->owner==_local_company
-		* watch out for possible side effects because this has never been the case before
-	- prevent multiple instances of the tbtr gui
-	- check all loops and ifs in this file for {} convention
-	- check for unused functions
-	- check when group + template list are being rebuilt
-		* TbtrGui::OnPaint doesn't rebuild the template list but rebuilds the groups list
-		* either both should be rebuilt or none
-		- check all occurrences of the rebuild funcs and see if they're needed everywhere
-	? is it necessary to have the owner specified in the tbtr gui
-		* should be always the _local_company
-	! add missing documentation
-		- also review the comment for the CmdTemplateReplace function
-	- templatevehicle: remove or rename the bool methods (getters)
-	- calc # trains that still need replacement + update the main gui accordingly
-		* commented code still exists
-    ? remove TemplateVehicle::prev
-    ? rename all .h -> .hpp
-    - remove prev and first from TV
-	- impl macro: for all templates from->to
-		* e.g.: TbtrGui::DrawTemplates
-	- untested: warning string for free-wagon-chains
-		* because with cloning we cannot create such a template, will need to wait for the edit function
-	- see how ..._TMPLRPL_EX_DIFF_RAILTYPE was used in the old code and either reintegrate it or remove it
-	  from the lang file
-	- compute the line_height for the tbtr gui, without this being an external param
-	? is TemplateVehicle::index really necessary
-		* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
-	? deal with parent groups
-	...
+	LATER
+		- calc length for a single engine
+			* branch test/store_length
+			* length is stored for each template and the sum is calculated for the head of the chain
+			* code reused from train_cmd.cpp:205
+			! calculated length is off by ~50%
+				* the actual calculation involves actual vehicle pointers which are used in some callbacks
+		- text strings
+			- check for all string definitions with TBTR, if they are actually used somewhere
+			- normalize their names
+		- template deletion
+			- after delete, select the next template in line, if any
+			- button: delete all templates
+		! TemplateVehicle::ContainsRailType(...)
+			? is it used
+			? is the railtype attr used anywhere
+			! the check ignores monorail and maglev types
+		? why is there no separate header for the cmd functions
+		- rename all TRW_WIDGET_TMPL_ elements
+		- normalize {} convention for switch-case
+		- TemplateVehicle::Draw(): refactor params, e.g. 'right' is not even used
+		- autoreplacement: it would be better to still do it if tbtr is impossible, e.g. due to current money
+			- allow scheduling of both
+			- move tbtr before autorpl in callvehticks
+			? prevent autorepl for a train if tbtr succeeded
+				* e.g. by removing it from the mapping
+		- scheduling of tbtr
+			- check if group of train has a template
+			- check if train already matches the template
+			- autoreplace handles start/stop of the vehicle via CmdStartStopVehicle(), l.708
+		- the selected group index should be updated to stick with the current group if another group is added or removed
+			- same for the templates list
+		- clone from existing template
+			? what happens right now when doing this
+			* could be useful when the editing is available or just to set other options
+		? all header includes into cpp files
+		? template options stored in group instead of template
+			* in order to configure each template replacement indiviually, without the need of a new template each
+			time
+			- display template replacement options in group row
+		- show floating money cost numbers after a replacement
+		- TemplateVehicle::CalculateCost() might also include the refit cost and maybe more
+			? use the command functions to do this simulation
+			- cache the total cost in the template itself
+				- cached_total_cost
+		*** GUI is currently running with this->owner==_local_company
+			* watch out for possible side effects because this has never been the case before
+		- prevent multiple instances of the tbtr gui
+		- check all loops and ifs in this file for {} convention
+		- check for unused functions
+		- check when group + template list are being rebuilt
+			* TbtrGui::OnPaint doesn't rebuild the template list but rebuilds the groups list
+			* either both should be rebuilt or none
+			- check all occurrences of the rebuild funcs and see if they're needed everywhere
+		? is it necessary to have the owner specified in the tbtr gui
+			* should be always the _local_company
+		! add missing documentation
+			- also review the comment for the CmdTemplateReplace function
+		- templatevehicle: remove or rename the bool methods (getters)
+		- calc # trains that still need replacement + update the main gui accordingly
+			* commented code still exists
+		? remove TemplateVehicle::prev
+		? rename all .h -> .hpp
+		- remove prev and first from TV
+		- impl macro: for all templates from->to
+			* e.g.: TbtrGui::DrawTemplates
+		- untested: warning string for free-wagon-chains
+			* because with cloning we cannot create such a template, will need to wait for the edit function
+		- see how ..._TMPLRPL_EX_DIFF_RAILTYPE was used in the old code and either reintegrate it or remove it
+		from the lang file
+		- compute the line_height for the tbtr gui, without this being an external param
+		? is TemplateVehicle::index really necessary
+			* might be defined via PoolItem's index already, the TemplatePool is defined with TemplateID as a template parameter
+		? deal with parent groups
+		...
 
-FUNCTIONALITIES TO INTEGRATE
-    - list templates
-    - replace all vehicles in template
-    - template replacement
-    - list template details
-    - test TbtrGui::BuildTemplateList()
-        *(this->templates.Append()) = tv;
-    - tbtrgui should have the owner as member
-        - refactor all methods which get an Owner as parameter
-    ? needed, maybe rm
-        template_vehicle.h : TemplateID FindTemplateIndexForGroup(GroupID);
-
-
-PATCH FEATURES
-
-- train gui, extra menu point, manage list -> Template Replacement
-
-- gui: Template Replacement
-    - list groups
-    - list templates
-    - list train details for selected template
-    - set selected template options
-        - use veh in depot
-        - keep rems
-        - use refit
-
-- create new template train
-- edit existing template train
-- delete template train
-- replace all vehicles in a template train
-- start/stop replacing group's trains -> template train
-- select rail type for template replacement
+	FUNCTIONALITIES TO INTEGRATE
+		- list templates
+		- replace all vehicles in template
+		- template replacement
+		- list template details
+		- test TbtrGui::BuildTemplateList()
+			*(this->templates.Append()) = tv;
+		- tbtrgui should have the owner as member
+			- refactor all methods which get an Owner as parameter
+		? needed, maybe rm
+			template_vehicle.h : TemplateID FindTemplateIndexForGroup(GroupID);
 
 
-FILES MODIFIED BY THE PATCH 0.701
+	PATCH FEATURES
 
-    ects/openttd_vs100.vcxproj
-    ects/openttd_vs100.vcxproj.filters
-    ects/openttd_vs80.vcproj
-    ects/openttd_vs90.vcproj
-    ce.list
-    autoreplace_cmd.cpp
-    autoreplace_func.h
-    command.cpp
-    command_type.h
-    depot_gui.cpp
-    group_cmd.cpp
-    group_gui.cpp
-    lang/english.txt
-    newgrf.h
-    newgrf_engine.cpp
-    newgrf_spritegroup.cpp
-    order_cmd.cpp
-    saveload/afterload.cpp
-    saveload/saveload.cpp
-    saveload/saveload.h
-    saveload/saveload_internal.h
-    saveload/tbtr_template_replacement_sl.cpp
-    saveload/tbtr_template_veh_sl.cpp
-    tbtr_template_gui_create.cpp
-    tbtr_template_gui_create.h
+	- train gui, extra menu point, manage list -> Template Replacement
+
+	- gui: Template Replacement
+		- list groups
+		- list templates
+		- list train details for selected template
+		- set selected template options
+			- use veh in depot
+			- keep rems
+			- use refit
+
+	- create new template train
+	- edit existing template train
+	- delete template train
+	- replace all vehicles in a template train
+	- start/stop replacing group's trains -> template train
+	- select rail type for template replacement
+
+
+	FILES MODIFIED BY THE PATCH 0.701
+
+		ects/openttd_vs100.vcxproj
+		ects/openttd_vs100.vcxproj.filters
+		ects/openttd_vs80.vcproj
+		ects/openttd_vs90.vcproj
+		ce.list
+		autoreplace_cmd.cpp
+		autoreplace_func.h
+		command.cpp
+		command_type.h
+		depot_gui.cpp
+		group_cmd.cpp
+		group_gui.cpp
+		lang/english.txt
+		newgrf.h
+		newgrf_engine.cpp
+		newgrf_spritegroup.cpp
+		order_cmd.cpp
+		saveload/afterload.cpp
+		saveload/saveload.cpp
+		saveload/saveload.h
+		saveload/saveload_internal.h
+		saveload/tbtr_template_replacement_sl.cpp
+		saveload/tbtr_template_veh_sl.cpp
+		tbtr_template_gui_create.cpp
+		tbtr_template_gui_create.h
     tbtr_template_gui_create_virtualtrain.cpp
     tbtr_template_gui_create_virtualtrain.h
     tbtr_template_gui_main.cpp
