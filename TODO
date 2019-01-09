@@ -3,11 +3,18 @@ updated:    2019-01-08
 
 
 STACK
+		- button delete last vehicle of a template chain
+			- setup action onclick
+			- impl command function
 		- create template
+			!!! crash when loading a savegame containing a template (?)
+			!!! crash when cloning from train.......
+			!! template engines are not always drawn, case:
+				* no template exists yet
+				* create one (single engine, non-artic)
 			- gui components
 				? free drag and drop between existing templates
 					? or just for the selected template
-				? button delete last vehicle of a template chain
 				! last cell is displayed with double height which snaps into the correct size once the UI is
 				  resized
 				? add engine info panel
@@ -17,6 +24,9 @@ STACK
 
 
 	TODO
+		- Relabel button "Add engine"
+		! the lang file should use spaces inbetween definition + text
+		- check all the _HELP texts of the gui's widgets
 		- add comments
 			- missing for some methods in tbtrgui
 		- rm TemplateVehicle::image_width
