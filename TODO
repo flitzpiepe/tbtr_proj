@@ -1,5 +1,5 @@
 
-updated:    2019-01-08
+updated:    2019-01-09
 
 
 STACK
@@ -7,11 +7,7 @@ STACK
 			- setup action onclick
 			- impl command function
 		- create template
-			!!! crash when loading a savegame containing a template (?)
-			!!! crash when cloning from train.......
-			!! template engines are not always drawn, case:
-				* no template exists yet
-				* create one (single engine, non-artic)
+			!! first vehicles of a template are not drawn (within the first 50 pixels)
 			- gui components
 				? free drag and drop between existing templates
 					? or just for the selected template
