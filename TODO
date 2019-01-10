@@ -1,19 +1,15 @@
 
-updated:    2019-01-09
+updated:    2019-01-10
 
 
 STACK
-		- button delete last vehicle of a template chain
-			- setup action onclick
-			- impl command function
 		- create template
-			!! first vehicles of a template are not drawn (within the first 50 pixels)
+			! hscroll seems to be wobbly, but maybe it's just the touchpad on the laptop
 			- gui components
 				? free drag and drop between existing templates
 					? or just for the selected template
 				! last cell is displayed with double height which snaps into the correct size once the UI is
 				  resized
-				? add engine info panel
 			! the selected engine is often not highlighted
 			- code TODOs
 
