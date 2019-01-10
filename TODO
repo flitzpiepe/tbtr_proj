@@ -3,25 +3,28 @@ updated:    2019-01-10
 
 
 STACK
-		- create template
-			! hscroll seems to be wobbly, but maybe it's just the touchpad on the laptop
-			- gui components
-				? free drag and drop between existing templates
-					? or just for the selected template
-				! last cell is displayed with double height which snaps into the correct size once the UI is
-				  resized
-			! the selected engine is often not highlighted
-			- code TODOs
-
 
 
 	TODO
+		!!! adding an electric engine causes a crash
+			- check where the railtype is used exactly
+		? what happens when trying to use an invalid template
 		- Relabel button "Add engine"
 		! the lang file should use spaces inbetween definition + text
 		- check all the _HELP texts of the gui's widgets
 		- add comments
 			- missing for some methods in tbtrgui
 		- rm TemplateVehicle::image_width
+		! normalize the {} style for switch case in tbtr_gui
+			? everywhere
+			? also for the other constructs
+		! inset for the template info pane is using the wrong text
+		- remove tbtr_debug.h includes
+		- code TODOs
+
+
+	LATER
+		- function: clone train from template
 		- ensure a sane template composition
 			- testbuy a template
 				* impossible, cannot test-buy and test-move the non-existing chain members at the same time
@@ -34,17 +37,10 @@ STACK
 					- don't appear in any other group, window, ...
 					- buying or moving them doesn't cost any money
 			- don't do anything and hope that the player will create valid templates
-		! normalize the {} style for switch case in tbtr_gui
-			? everywhere
-			? also for the other constructs
-		! inset for the template info pane is using the wrong text
-		- remove tbtr_debug.h includes
-		- check the allocation checks when cloning a template from a train
-			* tbtr..._cmd.cpp:486 has one check, but this is only for one vehicle
-			* there should be more checks when subsequent TVs are created for the rest of the train
-
-
-	LATER
+		- drag and drop for template parts
+			?between existing templates
+			? or just for the selected template
+		! engine gui, last cell is displayed with double height which snaps into the correct size once the UI is
 		- deleting a template should put the selection on the next available one
 		- text strings
 			- check for all string definitions with TBTR, if they are actually used somewhere
