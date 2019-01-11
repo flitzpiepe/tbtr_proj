@@ -1,29 +1,24 @@
 
-updated:    2019-01-10
+updated:    2019-01-11
 
 
 STACK
 
-
 	TODO
-		!!! adding an electric engine causes a crash
-			- check where the railtype is used exactly
 		? what happens when trying to use an invalid template
-		- Relabel button "Add engine"
-		! the lang file should use spaces inbetween definition + text
 		- check all the _HELP texts of the gui's widgets
-		- add comments
-			- missing for some methods in tbtrgui
-		- rm TemplateVehicle::image_width
-		! normalize the {} style for switch case in tbtr_gui
-			? everywhere
-			? also for the other constructs
+		? remove all {} for case stmts
 		! inset for the template info pane is using the wrong text
 		- remove tbtr_debug.h includes
 		- code TODOs
 
 
 	LATER
+		- filtering by railtype
+			- add selector for the railtype
+			- filters template list
+			? filters engine list
+			- make sure that the gui's index_selected_template is handled correctly otherwise this will lead to crashes
 		- function: clone train from template
 		- ensure a sane template composition
 			- testbuy a template
