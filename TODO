@@ -1,19 +1,24 @@
 
-updated:    2019-01-11
+updated:    2019-01-12
 
 
 STACK
 
 	TODO
-		? what happens when trying to use an invalid template
-		- check all the _HELP texts of the gui's widgets
-		? remove all {} for case stmts
-		! inset for the template info pane is using the wrong text
+		- test if the correct amount of money is subtracted after tbtr
+			- all template vehicles built
+			- some bought, some reused
+			- remainders sold
+			- replacement failed, should subtract no money
 		- remove tbtr_debug.h includes
 		- code TODOs
 
 
 	LATER
+		- check all the _HELP texts of the gui's widgets
+		- some of the widget defs don't seem to be used
+		- switch button text color depending on whether a group and or a template and or an engine are
+		  selected
 		- filtering by railtype
 			- add selector for the railtype
 			- filters template list
