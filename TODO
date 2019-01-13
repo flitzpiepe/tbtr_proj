@@ -3,13 +3,9 @@ updated:    2019-01-12
 
 
 STACK
+	- testing in multiplayer
 
 	TODO
-		- test if the correct amount of money is subtracted after tbtr
-			- all template vehicles built
-			- some bought, some reused
-			- remainders sold
-			- replacement failed, should subtract no money
 		- remove tbtr_debug.h includes
 		- code TODOs
 
