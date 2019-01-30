@@ -1,16 +1,28 @@
 
-updated:    2019-01-12
+updated:    2019-01-29
 
 
 STACK
-	- testing in multiplayer
-
 	TODO
-		- remove tbtr_debug.h includes
-		- code TODOs
-
+        - release
+            - prettify tt-f post
+            - add builds
+			? remove remote "current" + delete all merged branches
+			? need separate dev branch
+            ? add own branches
+                * not yet merged
+                    feat/createTemplate/test/tempTrain
+                    master
+                    release/v200
+                    test/testbuy_template
 
 	LATER
+        - templateID should be defined as unsigned
+        - make buttons larger, are too tiny to click -.-
+		- have a script to build
+			- against the current svn branch
+			- against the current nightly build
+			- against the current stable release
 		- check all the _HELP texts of the gui's widgets
 		- some of the widget defs don't seem to be used
 		- switch button text color depending on whether a group and or a template and or an engine are
@@ -18,6 +30,7 @@ STACK
 		- filtering by railtype
 			- add selector for the railtype
 			- filters template list
+                - each template should store its type, which is updated when the template is updated
 			? filters engine list
 			- make sure that the gui's index_selected_template is handled correctly otherwise this will lead to crashes
 		- function: clone train from template
