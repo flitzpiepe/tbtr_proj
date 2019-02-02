@@ -7,17 +7,32 @@ STACK
         - release
             - prettify tt-f post
             - add builds
-			? remove remote "current" + delete all merged branches
-			? need separate dev branch
-            ? add own branches
-                * not yet merged
-                    feat/createTemplate/test/tempTrain
-                    master
-                    release/v200
-                    test/testbuy_template
+			- code review
+				- generate VS projects, there is a script for it somewhere
+				! return value of docommandp used in the wrong way
+                ! ui
+                    ! fix tooltips
+                    ! gui is broken when changing the interface size (settings)
+                    - "template is in use" -> "template used by ${n} groups"
+                    - ui: find an alternative for the labels
+                        - see autoreplace gui or rail construction gui
+                    ? rename button keep rem -> keep remainders
+                        - also rename refit -> use refit
+                        -> needs more space
+                        - check under different interface sizes
+                    - ui reorg
+                        - remove unused elements
+                        - button groupings
+                            - add/del/modify templates
+                            - replacement options
+                            - start stop replacement
+				? commented code
+				- redo commit history
+					- check commit message style
+						https://wiki.openttd.org/Commit_style#Commit_message
 
 	LATER
-        - templateID should be defined as unsigned
+        - give templates a name
         - make buttons larger, are too tiny to click -.-
 		- have a script to build
 			- against the current svn branch
