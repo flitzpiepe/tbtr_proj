@@ -3,8 +3,11 @@ updated:    2019-01-29
 
 
 STACK
-	TODO
+		! game crashes when the main ui is opened and a group exists
+			* happens when trying to count the #trains that need replacement
         - release
+			! compilation warnings because a templateId is checked for >=0 somewhere
+				* it's unsigned so this is always true
             - prettify tt-f post
             - add builds
 			- code review
