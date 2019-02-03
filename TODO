@@ -9,7 +9,8 @@ STACK
             - add builds
 			- code review
 				- generate VS projects, there is a script for it somewhere
-				! return value of docommandp used in the wrong way
+				? return value of docommandp used in the wrong way
+                    - don't see where, seems to be used in the same way in industry_gui.cpp:618
                 ! ui
                     ! fix tooltips
                     ! gui is broken when changing the interface size (settings)
