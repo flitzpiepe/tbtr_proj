@@ -1,22 +1,22 @@
 
-updated:    2019-01-29
+updated:    2019-02-05
 
 
 STACK
-		! game crashes when the main ui is opened and a group exists
-			* happens when trying to count the #trains that need replacement
+		- docommandp callbacks
+			? need to check for the command result in the callback function
+			- document all funcs
         - release
-			! compilation warnings because a templateId is checked for >=0 somewhere
-				* it's unsigned so this is always true
             - prettify tt-f post
-            - add builds
 			- code review
-				- generate VS projects, there is a script for it somewhere
 				? return value of docommandp used in the wrong way
                     - don't see where, seems to be used in the same way in industry_gui.cpp:618
+					- only gui code executed conditionally after docommandp, this should be network-agnostic
                 ! ui
                     ! fix tooltips
                     ! gui is broken when changing the interface size (settings)
+						! the initial offset for y should be set depending on the actual interface size
+						- check if there are font size settings in the advanced settings or somewhere
                     - "template is in use" -> "template used by ${n} groups"
                     - ui: find an alternative for the labels
                         - see autoreplace gui or rail construction gui
@@ -36,6 +36,9 @@ STACK
 						https://wiki.openttd.org/Commit_style#Commit_message
 
 	LATER
+		? INVALID_TEMPLATE should be a static const
+			* it's also the case for INVALID_VEHICLE
+			! doesn't compile, some error from the network code because an include needs to be added in group.h
         - give templates a name
         - make buttons larger, are too tiny to click -.-
 		- have a script to build
