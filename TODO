@@ -3,15 +3,9 @@ updated:    2019-02-05
 
 
 STACK
-		- docommandp callbacks
-			? need to check for the command result in the callback function
-			- document all funcs
         - release
             - prettify tt-f post
 			- code review
-				? return value of docommandp used in the wrong way
-                    - don't see where, seems to be used in the same way in industry_gui.cpp:618
-					- only gui code executed conditionally after docommandp, this should be network-agnostic
                 ! ui
                     ! fix tooltips
                     ! gui is broken when changing the interface size (settings)
