@@ -6,7 +6,12 @@ STACK
         - release
             - prettify tt-f post
 			- code review
+				- strings
+					- reorder
+					- add de translations
                 ! ui
+					? keep the replacealltemplates widgets or rm them for now
+					- remove or impl the railtype switch element
                     ! fix tooltips
                     ! gui is broken when changing the interface size (settings)
 						! the initial offset for y should be set depending on the actual interface size
@@ -28,6 +33,7 @@ STACK
 				- redo commit history
 					- check commit message style
 						https://wiki.openttd.org/Commit_style#Commit_message
+				- code TODOs
 
 	LATER
 		? INVALID_TEMPLATE should be a static const
@@ -139,6 +145,16 @@ STACK
 	FUNCTIONALITIES TO INTEGRATE
 		- list templates
 		- replace all vehicles in template
+			strings
+				STR_TBTR_RPLALLGUI_TITLE                                        :{WHITE}Replace all Templace Vehicles
+				STR_TBTR_RPLALLGUI_INSET_TOP                                    :{BLACK}Choose Vehicle Type and Replacement
+				STR_TBTR_RPLALLGUI_INSET_TOP_1                                  :{BLACK}Template Engines
+				STR_TBTR_RPLALLGUI_INSET_TOP_2                                  :{BLACK}Buyable Engines
+				STR_TBTR_RPLALLGUI_INSET_BOTTOM                                 :{BLACK}Current Template List (updated only after replacement)
+				STR_TBTR_RPLALLGUI_BUTTON_RPLALL                                :{BLACK}Replace All
+				STR_TBTR_RPLALLGUI_BUTTON_APPLY                                 :{BLACK}Apply
+				STR_TBTR_RPLALLGUI_BUTTON_CANCEL                                :{BLACK}Cancel
+				STR_TBTR_RPLALLGUI_USE_TIP                                      :{BLACK}Select a vehicle type from each list and press 'Replace All'. If you are happy with the result displayed in the template list, press 'Apply' to actually apply these changes.
 		- template replacement
 		- list template details
 		- test TbtrGui::BuildTemplateList()
