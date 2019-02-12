@@ -6,25 +6,22 @@ STACK
         - release
             - prettify tt-f post
 			- code review
-				- strings
-					- reorder
-					- add de translations
                 ! ui
-					? keep the replacealltemplates widgets or rm them for now
-					- remove or impl the railtype switch element
-                    ! fix tooltips
+                    - rename widgets where necessary
+					- rm unused widgets
                     ! gui is broken when changing the interface size (settings)
+						- check if this->line_height is still needed
 						! the initial offset for y should be set depending on the actual interface size
 						- check if there are font size settings in the advanced settings or somewhere
                     - "template is in use" -> "template used by ${n} groups"
                     - ui: find an alternative for the labels
+                        - WWT_LABEL
                         - see autoreplace gui or rail construction gui
                     ? rename button keep rem -> keep remainders
                         - also rename refit -> use refit
                         -> needs more space
                         - check under different interface sizes
                     - ui reorg
-                        - remove unused elements
                         - button groupings
                             - add/del/modify templates
                             - replacement options
@@ -55,6 +52,7 @@ STACK
                 - each template should store its type, which is updated when the template is updated
 			? filters engine list
 			- make sure that the gui's index_selected_template is handled correctly otherwise this will lead to crashes
+        - add de translations
 		- function: clone train from template
 		- ensure a sane template composition
 			- testbuy a template
