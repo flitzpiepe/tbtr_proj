@@ -1,8 +1,12 @@
 
-updated:    2019-02-05
+updated:    2019-02-21
 
 
 STACK
+		! line heights are diverging in the engines list
+			- also test for a long groups list and templates list
+			- can be the latest commit, but then its not good for the nonzoomed gui
+		- gui zoom
         - release
             - prettify tt-f post
 			- code review
