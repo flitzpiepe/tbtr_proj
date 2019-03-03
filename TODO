@@ -3,7 +3,10 @@ updated:    2019-02-21
 
 
 STACK
-		! in quadsized gui the 
+        - tried to calc the step height like the buildvehiclewindow, but it doesn't work for any gui zoom
+          factor
+		! in quadsized gui the lines in the engines list are not matching up
+            * need to add 1 to the loop increment, but only for the 4xgui
 		- gui zoom
         - release
             - prettify tt-f post
