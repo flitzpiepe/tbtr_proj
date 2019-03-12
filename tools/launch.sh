@@ -1,6 +1,6 @@
 #!/bin/bash
 
-openttd=/home/streen/code/openttd/tbtr_new/bin/openttd
+openttd=/home/streen/code/openttd/tbtr/bin/openttd
 cfg=/home/streen/.openttd/openttd.cfg
 
 zoom=
