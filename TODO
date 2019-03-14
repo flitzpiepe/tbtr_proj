@@ -4,6 +4,8 @@ updated:    2019-03-12
 
 STACK
         - check all matrices in all zoom levels
+			! resize in the updatewidgets + this->resize are not the same
+			! zoom==0 looks ok with step_size==60
             ! templates
                 ! vertically wrong on 2x and 4x
                 ! horizontally wrong at 1x and 2x

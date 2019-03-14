@@ -1,6 +1,7 @@
 #!/bin/bash
 
 openttd=/home/streen/code/openttd/tbtr/bin/openttd
+[[ $(hostname) == 'archbox' ]] && openttd=/home/streen/code/openttd/tbtr_new/bin/openttd
 cfg=/home/streen/.openttd/openttd.cfg
 
 zoom=
