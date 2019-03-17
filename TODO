@@ -3,6 +3,8 @@ updated:    2019-03-12
 
 
 STACK
+		- try to use ScaleGUITrad() on the cached sprite_width of a tv
+			- incl zoom_func.h
         - check all matrices in all zoom levels
 			! resize in the updatewidgets + this->resize are not the same
 			! zoom==0 looks ok with step_size==60
