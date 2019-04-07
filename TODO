@@ -3,9 +3,6 @@ updated:    2019-03-12
 
 
 STACK
-		- document the new funcs
-        - check all matrices in all zoom levels
-			! resize in the updatewidgets + this->resize are not the same
         - release
             - prettify tt-f post
 			- code review
