@@ -20,4 +20,5 @@ done
 
 [[ $zoom != '' ]] && sed -i "s/^gui_zoom.*/gui_zoom = $zoom/" $cfg
 
+make -j9
 $openttd -s null -g tbtr.sav
