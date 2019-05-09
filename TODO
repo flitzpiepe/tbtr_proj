@@ -1,26 +1,19 @@
 
-updated:    2019-03-12
+updated:    2019-05-09
 
 
 STACK
-        ! the problem is the inset panel above the engine list for some reason
-            * can be fixed by removing it
-            * can be fixed by removing only the setfill() on the panel + matrix
-			* can be fixed by removing the complete button area on the rhs
-			* can be fixed by adding prebuttonfluff
-				* fix/prebuttonfluff
-		- merge fix_gui + fix_guizoom
-			! engine list height is different from the fix/gui_zoom
-			! group list width is different from the fix/gui_zoom
-			* src/tbtr_gui.cpp(HEAD), src/.tbtr_gui.cpp(fix/gui_zoom)
-            - MERGE_GUIZOOM_FIXZUI
-                - reverted the commit b66f003db -> solved the issue
-			- positioning of the templates widget under both branches
-				MERGE
-				$8 = (const Rect &) @0x7fffffffd410: {left = 297, top = 153, right = 887, bottom = 320}
-				fix/guizoom
-				$7 = (const Rect &) @0x7fffffffd3c0: {left = 216, top = 150, right = 956, bottom = 317}
         - release
+            - rename all inset\c stuff in the *gui.cpp
+            - ui
+                - test: rm tmpl options buttons
+                    - make the blue strings clickable
+                    - fix their position for each gui zoom level
+                - enable/disable all buttons depending on gui selection options
+                - make buttons colored
+                    - start: green
+                    - stop: red
+                    - disabled: gray
             - template options should be stored per group
                 - group display 2x height
                 - add buttons
