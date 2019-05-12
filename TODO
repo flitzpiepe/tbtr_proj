@@ -3,15 +3,10 @@ updated:    2019-05-09
 
 
 STACK
-		! template cell is not selectable anymore 
-		- test: rm tmpl options buttons
-			- fix their position for each gui zoom level
         - release
             - rename all inset\c stuff in the *gui.cpp
             - ui
-				- check functions
-					- GetStringBoundingBox
-					- GetStringHeight
+				- scroll current template into view when adding/deleting engines
                 - enable/disable all buttons depending on gui selection options
                 - make buttons colored
                     - start: green
