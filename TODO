@@ -1,19 +1,23 @@
 
-updated:    2019-05-09
+updated:    2019-05-19
 
 
 STACK
+		- group display 2x height
+			! all matrices have double height if the resize->height is doubled for both rhs matrices
+			- keep the templates at single line height
+			- adjust the drawing heights in the templates matrix
+			- move the buying costs into the template info box
+		- template options should be stored per group
+			- add buttons
         - release
             - ui
 				- scroll current template into view when adding/deleting engines
                 - enable/disable all buttons depending on gui selection options
                 - make buttons colored
-                    - start: green
-                    - stop: red
+                    ? start: green
+                    ? stop: red
                     - disabled: gray
-            - template options should be stored per group
-                - group display 2x height
-                - add buttons
 			! button isn't reset after cloning from a train
 			- rename top matrix, bottom matrix to groups + templates
             - prettify tt-f post
