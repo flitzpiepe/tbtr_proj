@@ -1,19 +1,30 @@
 
-updated:    2019-05-19
+updated:    2019-05-21
 
 
 STACK
-		- group display 2x height
-			! all matrices have double height if the resize->height is doubled for both rhs matrices
-			- keep the templates at single line height
-			? what about the free-wagon-chain warning
-				- check in all zoom levels
-			- adjust the drawing heights in the templates matrix
-			- move the buying costs into the template info box
+		- test/rearrange_...
+			* necessary in order to have a predicable height on the 2 matrices next to each other
+				this was not the case with the scrollbar in the templ.matrix, which is resized with the gui
+			- add the template info area again
+			- adjust widths
+		! height is again wrong in the engines list ...........................
 		- template options should be stored per group
+			- store options per group, not template
+				- test if they are still correctly applied
 			- add buttons
+				* removed code still in drawtemplates()
         - release
+			!! new engines added to already deleted template
+				1. delete template
+				2. deselect templates
+				3. add new engine (tested with wagon)
+				-> deleted template reappears, with the new engine appended
             - ui
+				! template info box: ypos is depending on the zoom level
+				- remove all members of enum TemplateReplaceWindowWidgets { that are not needed anymore
+					* TRW_WIDGET_INFO_GROUP,
+					* TRW_WIDGET_INFO_TEMPLATE,
 				- add a fixed-pos header line on top of each RHS matrix
 					- groups: name, index, #template_id, #trains to be replaced
 						? template options (might be harder to enable/disable them)
