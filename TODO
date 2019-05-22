@@ -1,15 +1,11 @@
 
-updated:    2019-05-21
+updated:    2019-05-22
 
 
 STACK
-		- test/rearrange_...
-			* necessary in order to have a predicable height on the 2 matrices next to each other
-				this was not the case with the scrollbar in the templ.matrix, which is resized with the gui
-			- add the template info area again
-			- adjust widths
-		! height is again wrong in the engines list ...........................
 		- template options should be stored per group
+			? mv the command CmdToggleTemplateOption to group_cmd
+			- make a new savegame for testing -.--.-.-.-.-
 			- store options per group, not template
 				- test if they are still correctly applied
 			- add buttons
