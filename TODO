@@ -1,22 +1,21 @@
 
-updated:    2019-05-22
+updated:    2019-05-23
 
 
 STACK
 		- template options should be stored per group
 			? mv the command CmdToggleTemplateOption to group_cmd
-			- make a new savegame for testing -.--.-.-.-.-
-			- store options per group, not template
-				- test if they are still correctly applied
-			- add buttons
-				* removed code still in drawtemplates()
+			! fix position for "template used" string in the groups list
         - release
+			!? crash when cloning several templates from a train quickly in a row
 			!! new engines added to already deleted template
 				1. delete template
 				2. deselect templates
 				3. add new engine (tested with wagon)
 				-> deleted template reappears, with the new engine appended
             - ui
+				- sort entries by name in UpdateWidgetSize
+				- comment UpdateGUI
 				! template info box: ypos is depending on the zoom level
 				- remove all members of enum TemplateReplaceWindowWidgets { that are not needed anymore
 					* TRW_WIDGET_INFO_GROUP,
