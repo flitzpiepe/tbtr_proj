@@ -1,11 +1,14 @@
 
-updated:    2019-05-23
+updated:    2019-05-29
 
 
 STACK
 		- template options should be stored per group
 			? mv the command CmdToggleTemplateOption to group_cmd
-			! fix position for "template used" string in the groups list
+			- disable drop shadow for grey texts in the gui
+				- groups list
+					- no trains to replace
+					- no template set
         - release
 			!? crash when cloning several templates from a train quickly in a row
 			!! new engines added to already deleted template
@@ -13,6 +16,7 @@ STACK
 				2. deselect templates
 				3. add new engine (tested with wagon)
 				-> deleted template reappears, with the new engine appended
+			!! stop replace doesn't work
             - ui
 				- sort entries by name in UpdateWidgetSize
 				- comment UpdateGUI
