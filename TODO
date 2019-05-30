@@ -3,24 +3,28 @@ updated:    2019-05-29
 
 
 STACK
-		- template options should be stored per group
-			? mv the command CmdToggleTemplateOption to group_cmd
-			- disable drop shadow for grey texts in the gui
-				- groups list
-					- no trains to replace
-					- no template set
+		! after adding some engines the game crashes when being closed ..?...??
+			? always after selecting an existing template and adding engines to it
+		!! new engines added to already deleted template
+			1. delete template
+			2. deselect templates
+			3. add new engine (tested with wagon)
+			-> deleted template reappears, with the new engine appended
+			* when a template is deleted and a new engine is added, the new engine gets the ID from the
+			  deleted template and will thus be in the same spot in the gui list as the deleted template
+			  before it. this means that setting the index_selected_template to the last index in the list is
+			  not correct, it only works when no template has been deleted before...
+				=> so basically, the problem is that the template list is always ordered by template id
         - release
+			!! crash when deleting template but none is selected
 			!? crash when cloning several templates from a train quickly in a row
-			!! new engines added to already deleted template
-				1. delete template
-				2. deselect templates
-				3. add new engine (tested with wagon)
-				-> deleted template reappears, with the new engine appended
-			!! stop replace doesn't work
             - ui
+				- TbtrGui::groups and ::templates are sometimes used with [] and sometimes with .Get()
+					- normalize
 				- sort entries by name in UpdateWidgetSize
 				- comment UpdateGUI
 				! template info box: ypos is depending on the zoom level
+				- rename button identifiers for add + delete engine (into ..._ADD_ENGINE, ..._DELETE_ENGINE)
 				- remove all members of enum TemplateReplaceWindowWidgets { that are not needed anymore
 					* TRW_WIDGET_INFO_GROUP,
 					* TRW_WIDGET_INFO_TEMPLATE,
@@ -36,6 +40,10 @@ STACK
                     - disabled: gray
 			! button isn't reset after cloning from a train
 			- rename top matrix, bottom matrix to groups + templates
+			- when finished
+				- code TODOs
+				- test template replacement + all options
+				- check all whitespace indentation + formatting
             - prettify tt-f post
 			- code review
                 ! ui
