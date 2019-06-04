@@ -1,10 +1,27 @@
 
-updated:    2019-05-29
+updated:    2019-06-04
 
 
 STACK
+		*** session.vim
+		!? engines appended to the wrong vehicle
+			? couldn't reproduce
+			* repeat:
+				1. have 3 templates
+				2. delete one
+				3. add engines to a remaining one
+				-> should replace some engines in the existing template instead of being appended
+			- only in a new game (maybe because tbtr.sav contains the wrong last pointers...)
 		! after adding some engines the game crashes when being closed ..?...??
-			? always after selecting an existing template and adding engines to it
+			* repeatable
+				1. delete a template
+				2. add engines to an existing template
+			? because the deleted template's id is reused or something
+			! the newly added engine will be deleted (same pointer) but with a different (invalid) ID
+				during pool cleanup
+            !!! revert all changes from commit
+                * 9f510ff40
+                * "REVERT_THESE_CHANGES_LATER"
 		!! new engines added to already deleted template
 			1. delete template
 			2. deselect templates
@@ -18,6 +35,11 @@ STACK
         - release
 			!! crash when deleting template but none is selected
 			!? crash when cloning several templates from a train quickly in a row
+			! TemplateVehicle::CloneFromTrain() return value is weird
+				- should be void
+			! after cloning:
+				! template matrix is not immediately refreshed
+				! clone button is not disabled again
             - ui
 				- TbtrGui::groups and ::templates are sometimes used with [] and sometimes with .Get()
 					- normalize
