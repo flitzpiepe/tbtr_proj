@@ -9,6 +9,7 @@
 #define TBTR_DEBUG_H
 
 #include <iostream>
+#include <iomanip>
 
 #include "stdafx.h"
 #include "tbtr_template_vehicle.h"
@@ -19,12 +20,16 @@ namespace td
 {
 	void sv(TemplateVehicle* t)
 	{
-		std::cout << "  ix:" << t->index
-			<< "  e:" << t->engine_type
-			<< "  ty:" << t->type
-			<< "  st:" << (short)(t->subtype)
-			<< "  ct:" << (short)(t->cargo_type)
-			<< "  cs:" << (short)(t->cargo_subtype)
+		std::cout << "  ix:" << std::setw(3) << t->index
+			<< "  e:" << std::setw(3) << t->engine_type
+			<< "  ty:" << std::setw(1) << t->type
+			<< "  st:" << std::setw(1) << (short)(t->subtype)
+			<< "  ct:" << std::setw(1) << (short)(t->cargo_type)
+			<< "  cs:" << std::setw(1) << (short)(t->cargo_subtype)
+			<< "  h:" << std::setw(14) << (t->first)
+			<< "  p:" << std::setw(14) << (t->prev)
+			<< "  n:" << std::setw(14) << (t->next)
+			<< "  l:" << std::setw(14) << (t->last)
 			<< "  " << t
 			<< std::endl;
 	}
