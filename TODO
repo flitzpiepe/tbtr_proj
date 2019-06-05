@@ -1,40 +1,12 @@
 
-updated:    2019-06-04
+updated:    2019-06-05
 
 
 STACK
-		*** session.vim
-		!? engines appended to the wrong vehicle
-			? couldn't reproduce
-			* repeat:
-				1. have 3 templates
-				2. delete one
-				3. add engines to a remaining one
-				-> should replace some engines in the existing template instead of being appended
-			- only in a new game (maybe because tbtr.sav contains the wrong last pointers...)
-		! after adding some engines the game crashes when being closed ..?...??
-			* repeatable
-				1. delete a template
-				2. add engines to an existing template
-			? because the deleted template's id is reused or something
-			! the newly added engine will be deleted (same pointer) but with a different (invalid) ID
-				during pool cleanup
-            !!! revert all changes from commit
+        - release
+            - revert all changes from commit
                 * 9f510ff40
                 * "REVERT_THESE_CHANGES_LATER"
-		!! new engines added to already deleted template
-			1. delete template
-			2. deselect templates
-			3. add new engine (tested with wagon)
-			-> deleted template reappears, with the new engine appended
-			* when a template is deleted and a new engine is added, the new engine gets the ID from the
-			  deleted template and will thus be in the same spot in the gui list as the deleted template
-			  before it. this means that setting the index_selected_template to the last index in the list is
-			  not correct, it only works when no template has been deleted before...
-				=> so basically, the problem is that the template list is always ordered by template id
-        - release
-			!! crash when deleting template but none is selected
-			!? crash when cloning several templates from a train quickly in a row
 			! TemplateVehicle::CloneFromTrain() return value is weird
 				- should be void
 			! after cloning:
