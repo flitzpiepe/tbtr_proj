@@ -1,39 +1,26 @@
 
-updated:    2019-06-05
+updated:    2019-06-07
 
 
 STACK
         - release
-            - revert all changes from commit
-                * 9f510ff40
-                * "REVERT_THESE_CHANGES_LATER"
-			! TemplateVehicle::CloneFromTrain() return value is weird
-				- should be void
-			! after cloning:
-				! template matrix is not immediately refreshed
-				! clone button is not disabled again
             - ui
-				- TbtrGui::groups and ::templates are sometimes used with [] and sometimes with .Get()
-					- normalize
-				- sort entries by name in UpdateWidgetSize
-				- comment UpdateGUI
-				! template info box: ypos is depending on the zoom level
-				- rename button identifiers for add + delete engine (into ..._ADD_ENGINE, ..._DELETE_ENGINE)
-				- remove all members of enum TemplateReplaceWindowWidgets { that are not needed anymore
-					* TRW_WIDGET_INFO_GROUP,
-					* TRW_WIDGET_INFO_TEMPLATE,
-				- add a fixed-pos header line on top of each RHS matrix
+				? add a fixed-pos header line on top of each RHS matrix
 					- groups: name, index, #template_id, #trains to be replaced
 						? template options (might be harder to enable/disable them)
 					- templates: idx, template, #groups using it, length, is-free-wagon-chain
+				- check all string positions on all zoom levels again...
 				- scroll current template into view when adding/deleting engines
-                - enable/disable all buttons depending on gui selection options
-                - make buttons colored
-                    ? start: green
-                    ? stop: red
-                    - disabled: gray
-			! button isn't reset after cloning from a train
-			- rename top matrix, bottom matrix to groups + templates
+				- buttons
+					- think again about the button placement...
+					- enable/disable all buttons depending on gui selection options
+					- make buttons colored
+						? start: green
+						? stop: red
+						- disabled: gray
+            - revert all changes from commit
+                * 9f510ff40
+                * "REVERT_THESE_CHANGES_LATER"
 			- when finished
 				- code TODOs
 				- test template replacement + all options
@@ -67,6 +54,11 @@ STACK
 				- code TODOs
 
 	LATER
+		? shift + click_on_clone_button => continuous cloning
+			* cloning is not disabled by selecting a vehicle
+			* can be disabled by clicking the clone button again
+			* might be useful to create several templates quickly which should be similar anyway and can be
+			  edited differently later
 		? INVALID_TEMPLATE should be a static const
 			* it's also the case for INVALID_VEHICLE
 			! doesn't compile, some error from the network code because an include needs to be added in group.h
