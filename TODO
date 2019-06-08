@@ -1,8 +1,10 @@
 
-updated:    2019-06-07
+updated:    2019-06-08
 
 
 STACK
+		- check if everything still works
+		- enable/disable all buttons depending on gui selection options
         - release
             - ui
 				? add a fixed-pos header line on top of each RHS matrix
@@ -10,14 +12,8 @@ STACK
 						? template options (might be harder to enable/disable them)
 					- templates: idx, template, #groups using it, length, is-free-wagon-chain
 				- check all string positions on all zoom levels again...
-				- scroll current template into view when adding/deleting engines
 				- buttons
 					- think again about the button placement...
-					- enable/disable all buttons depending on gui selection options
-					- make buttons colored
-						? start: green
-						? stop: red
-						- disabled: gray
             - revert all changes from commit
                 * 9f510ff40
                 * "REVERT_THESE_CHANGES_LATER"
@@ -28,30 +24,14 @@ STACK
             - prettify tt-f post
 			- code review
                 ! ui
-                    - rename widgets where necessary
-					- rm unused widgets
-                    ! gui is broken when changing the interface size (settings)
-						- check if this->line_height is still needed
-						! the initial offset for y should be set depending on the actual interface size
-						- check if there are font size settings in the advanced settings or somewhere
-                    - "template is in use" -> "template used by ${n} groups"
-                    - ui: find an alternative for the labels
-                        - WWT_LABEL
-                        - see autoreplace gui or rail construction gui
                     ? rename button keep rem -> keep remainders
                         - also rename refit -> use refit
                         -> needs more space
                         - check under different interface sizes
-                    - ui reorg
-                        - button groupings
-                            - add/del/modify templates
-                            - replacement options
-                            - start stop replacement
 				? commented code
 				- redo commit history
 					- check commit message style
 						https://wiki.openttd.org/Commit_style#Commit_message
-				- code TODOs
 
 	LATER
 		? shift + click_on_clone_button => continuous cloning
