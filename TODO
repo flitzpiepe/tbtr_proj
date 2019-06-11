@@ -7,13 +7,15 @@ STACK
 		- enable/disable all buttons depending on gui selection options
         - release
             - ui
+				- text changes
+					Delete last engine -> Delete engine
+					Clone -> Clone template
+					- check tooltips
 				? add a fixed-pos header line on top of each RHS matrix
 					- groups: name, index, #template_id, #trains to be replaced
 						? template options (might be harder to enable/disable them)
 					- templates: idx, template, #groups using it, length, is-free-wagon-chain
 				- check all string positions on all zoom levels again...
-				- buttons
-					- think again about the button placement...
             - revert all changes from commit
                 * 9f510ff40
                 * "REVERT_THESE_CHANGES_LATER"
@@ -21,6 +23,12 @@ STACK
 				- code TODOs
 				- test template replacement + all options
 				- check all whitespace indentation + formatting
+			- allow only 1 instance of the ui
+			? template refit
+				? reuse engine matrix +  toggle button
+				- also need to (in)validate existing refit orders for treated trains
+					* e.g. autoreplace_cmd.cpp:183
+			? filter by rail type
             - prettify tt-f post
 			- code review
                 ! ui
