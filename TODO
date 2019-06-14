@@ -1,10 +1,11 @@
 
-updated:    2019-06-08
+updated:    2019-06-15
 
 
 STACK
         - release
             - ui
+				- allow only 1 instance of the ui
 				- check tooltips
 				? positions about the template options (keep,...) are used in 2 places, should be in a variable
 					* search for ScaleGUITrad(170)
@@ -15,6 +16,11 @@ STACK
 				- code TODOs
 				- test template replacement + all options
 				- check all whitespace indentation + formatting
+			? template refit
+				? reuse engine matrix +  toggle button
+				- also need to (in)validate existing refit orders for treated trains
+					* e.g. autoreplace_cmd.cpp:183
+			? filter by rail type
             - prettify tt-f post
 			- code review
                 ! ui
