@@ -3,17 +3,11 @@ updated:    2019-06-08
 
 
 STACK
-		- check if everything still works
-		- enable/disable all buttons depending on gui selection options
         - release
             - ui
-				? add a fixed-pos header line on top of each RHS matrix
-					- groups: name, index, #template_id, #trains to be replaced
-						? template options (might be harder to enable/disable them)
-					- templates: idx, template, #groups using it, length, is-free-wagon-chain
-				- check all string positions on all zoom levels again...
-				- buttons
-					- think again about the button placement...
+				- check tooltips
+				? positions about the template options (keep,...) are used in 2 places, should be in a variable
+					* search for ScaleGUITrad(170)
             - revert all changes from commit
                 * 9f510ff40
                 * "REVERT_THESE_CHANGES_LATER"
@@ -34,6 +28,12 @@ STACK
 						https://wiki.openttd.org/Commit_style#Commit_message
 
 	LATER
+		- allow only 1 instance of the ui
+		? template refit
+				? reuse engine matrix +  toggle button
+				- also need to (in)validate existing refit orders for treated trains
+						* e.g. autoreplace_cmd.cpp:183
+		? filter by rail type
 		? shift + click_on_clone_button => continuous cloning
 			* cloning is not disabled by selecting a vehicle
 			* can be disabled by clicking the clone button again
