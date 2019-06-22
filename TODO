@@ -1,5 +1,5 @@
 
-updated:    2019-06-15
+updated:    2019-06-23
 
 
 STACK
@@ -7,6 +7,19 @@ STACK
             - ui
 				- allow only 1 instance of the ui
 				- check tooltips
+					- add tooltips for
+						- the template options
+						- the template number in the groups matrix
+						? group name: "Name of the group"
+					- change
+						- engines list: "[...] to the currently selected template vehicle"
+						- template matrix: "Select a template, for assignment to a group or for modification"
+						- button: delete template: needs its own text
+						- button: stop replc: needs its own text
+						- button: start replc: needs its own text
+					- remove tooltips from the headings
+						- template matrix
+						- engines matrix
 				? positions about the template options (keep,...) are used in 2 places, should be in a variable
 					* search for ScaleGUITrad(170)
             - revert all changes from commit
