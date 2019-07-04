@@ -1,25 +1,10 @@
 
-updated:    2019-06-23
+updated:    2019-07-04
 
 
 STACK
         - release
             - ui
-				- allow only 1 instance of the ui
-				- check tooltips
-					- add tooltips for
-						- the template options
-						- the template number in the groups matrix
-						? group name: "Name of the group"
-					- change
-						- engines list: "[...] to the currently selected template vehicle"
-						- template matrix: "Select a template, for assignment to a group or for modification"
-						- button: delete template: needs its own text
-						- button: stop replc: needs its own text
-						- button: start replc: needs its own text
-					- remove tooltips from the headings
-						- template matrix
-						- engines matrix
 				? positions about the template options (keep,...) are used in 2 places, should be in a variable
 					* search for ScaleGUITrad(170)
             - revert all changes from commit
@@ -29,11 +14,6 @@ STACK
 				- code TODOs
 				- test template replacement + all options
 				- check all whitespace indentation + formatting
-			? template refit
-				? reuse engine matrix +  toggle button
-				- also need to (in)validate existing refit orders for treated trains
-					* e.g. autoreplace_cmd.cpp:183
-			? filter by rail type
             - prettify tt-f post
 			- code review
                 ! ui
@@ -47,11 +27,10 @@ STACK
 						https://wiki.openttd.org/Commit_style#Commit_message
 
 	LATER
-		- allow only 1 instance of the ui
 		? template refit
-				? reuse engine matrix +  toggle button
-				- also need to (in)validate existing refit orders for treated trains
-						* e.g. autoreplace_cmd.cpp:183
+			? reuse engine matrix +  toggle button
+			- also need to (in)validate existing refit orders for treated trains
+				* e.g. autoreplace_cmd.cpp:183
 		? filter by rail type
 		? shift + click_on_clone_button => continuous cloning
 			* cloning is not disabled by selecting a vehicle
