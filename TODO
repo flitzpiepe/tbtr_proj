@@ -1,17 +1,10 @@
 
-updated:    2019-07-04
+updated:    2019-07-11
 
 
 STACK
         - release
-            - ui
-				? positions about the template options (keep,...) are used in 2 places, should be in a variable
-					* search for ScaleGUITrad(170)
-            - revert all changes from commit
-                * 9f510ff40
-                * "REVERT_THESE_CHANGES_LATER"
 			- when finished
-				- code TODOs
 				- test template replacement + all options
 				- check all whitespace indentation + formatting
             - prettify tt-f post
