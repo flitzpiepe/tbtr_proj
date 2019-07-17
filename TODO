@@ -1,5 +1,5 @@
 
-updated:    2019-07-15
+updated:    2019-07-17
 
 
 STACK
@@ -9,7 +9,12 @@ STACK
 			* doesn't happen if multiple trains are replaced in a row without reloading
 			* deselecting keepremainders doesn't make a difference
 			* new_vehicle from line 357 is 0x0
-			? something is not cleaned up correctly in the dtor
+			* _new_vehicle_id is 0 before the reload and isn't changed by the flags==DC_NONE build command
+				-> doesn't make a lot of sense to have a build command then
+				-> cannot form a new chain in DC_NONE mode
+					-> meaning that testing the composition in DC_NONE doesn't work if we have to buy new
+					   vehicles
+				? does the whole backup thing work then
 		- keep rem
 		- test template replacement + all options
 			- use depot
