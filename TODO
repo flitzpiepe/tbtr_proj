@@ -1,27 +1,18 @@
 
-updated:    2019-07-17
+updated:    2019-07-21
 
 
 STACK
-		! crash
-			* only after a reload during the game
-			* happens only if the template replacement has been done and the game is reloaded
-			* doesn't happen if multiple trains are replaced in a row without reloading
-			* deselecting keepremainders doesn't make a difference
-			* new_vehicle from line 357 is 0x0
-			* _new_vehicle_id is 0 before the reload and isn't changed by the flags==DC_NONE build command
-				-> doesn't make a lot of sense to have a build command then
-				-> cannot form a new chain in DC_NONE mode
-					-> meaning that testing the composition in DC_NONE doesn't work if we have to buy new
-					   vehicles
-				? does the whole backup thing work then
-		- keep rem
-		- test template replacement + all options
-			- use depot
         - release
-			- when finished
-				- check all whitespace indentation + formatting
             - prettify tt-f post
+				- screenshots
+				- sections
+					- intro
+					- history
+					- how to use it
+					- plans
+					- github
+					? attachments
 
 	INTO TRUNK
 		- code review
@@ -34,6 +25,9 @@ STACK
 			- redo commit history
 				- check commit message style
 					https://wiki.openttd.org/Commit_style#Commit_message
+		- check if the backup strategy works
+			- insufficient money
+			- have a template where a move command should fail
 		? template refit
 			? reuse engine matrix +  toggle button
 			- also need to (in)validate existing refit orders for treated trains
