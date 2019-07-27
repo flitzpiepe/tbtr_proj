@@ -3,9 +3,10 @@ updated:    2019-07-21
 
 
 STACK
+		! crash
+			- select first group, click stop replacement
         - release
             - prettify tt-f post
-				- screenshots
 				- sections
 					- intro
 					- history
@@ -13,8 +14,11 @@ STACK
 					- plans
 					- github
 					? attachments
+				- screenshots
 
 	INTO TRUNK
+		- test: when an engine is removed from a train, but with keep remainders, and it had shared
+		  orders, check if the orders still remain for other vehicles which share the orders
 		- code review
 			! ui
 				? rename button keep rem -> keep remainders
