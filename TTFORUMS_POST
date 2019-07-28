@@ -1,7 +1,79 @@
-[2.0.0] Template based train replacement
+[2.0.1] Template based train replacement
 
 
 [b]OpenTTD TBTR[/b]
+
+[color=#FFBF00][b]__Intro__[/b][/color]
+
+This patch was created to minimize the amount of micromanagement of one important part of the game: keeping
+your trains in order.
+It does this by offering a mechanism to predefine train templates and letting you apply them to existing
+vehicle groups. This works similar to the already existing vehicle autoreplacement feature, only that it is
+not limited to individual vehicles but whole trains instead.
+In short:
+* create template
+* assign to a group (of trains)
+* when any train from that group enters a depot, it will be changed to match the template
+It also really helps to maintain the length of trains in a group. So when new vehicles become available that
+are longer than previous ones so less of them should be used, e.g. not to exceed the length of existing train
+platforms. Or if newer wagons have larger capacities and simply not as many cars are needed for each train.
+
+[color=#FFBF00][b]__How to use it__[/b][/color]
+
+[b]Open the UI[/b]
+[list]
+[*]from the train groups gui, under "Manage List" and select "Template Replacement".
+[*]use the key combination [ctrl] + [e].
+[/list]
+
+[b]Organize your trains in groups.[/b]
+Each group can have one template assigned and if that is the case, this template will be applied to all trains
+in the group.
+
+[b]Create a new template[/b]
+[list]
+[*]Clone from an existing train by using the Clone button and selecting any train from the game window.
+[*]Create a new custom template: select an engine from the top-right list make sure that no template is
+selected from the bottom list and click "Add Engine". This will create a new template and select it.  While a
+template is selected you can append a new engine with "Add Engine" or remove the last engine from it with
+"Delete Engine".
+[/list]
+
+Currently there is no option to set the refit for a template manually. But cloning a template from an existing
+train will also store the refit for all parts of that train so that this always remains a fallback option.
+This means that you could simply create the first train for each group manually and set it as the template for
+the rest.
+
+At this moment no additional checks are done whether this template composition is actually valid, this is your
+job. BUT, when a template is later applied to an existing train and it turns out that it is not valid after
+all, no changes will occur, so no harm should be done to your existing trains if you create an invalid
+template ;)
+
+[b]Use the additional options[/b]
+All three available options are applied on a per-group basis. This makes sense since 2 groups might want to
+use the same template but they might want to use a different set of options.
+The options can be triggered simply by clicking on one of the strings in the groups list "use depot", "keep
+rem" and "use refit". Highlighted in blue means that the option is ON, in gray it means that it is OFF.
+
+[b]Use Depot[/b]
+When this is ON the template replacement will reuse vehicles from the depot as needed to create the new
+chain. But it will only consider vehicles which are stopped and idle in the depot and which don't belong to
+any specific group.
+
+[b]Keep Remainders[/b]
+When this is ON the parts of a train which are not needed anymore after template replacement will be set
+to a stopped and idle state in the depot so that they might be used for later replacements. If it is OFF all
+remainders from the train will be sold immediately.
+
+[b]Use Refit[/b]
+When this is ON each train part will use the same refit settings as the one in the template.
+This can be useful when 2 groups share the same template but will use it only to shuffle the vehicles around
+while the other will use it also to apply the refit.
+
+[b]Patch available at github:[/b]
+git@github.com:flitzpiepe/OpenTTD.git
+
+------------------------------------------------------------------------------------------------------------------------------------------
 
 [b]Note about version 2.0[/b]
 
@@ -25,7 +97,8 @@ can:[/b]
 [*]Delete a template
 [/list]
 
-[b]The 3 Template usage options remain:[/b]
+[b]The 3 Template usage options as known before, but are now stored for each group instead of each template,
+since multiple groups should not be forced to use the same value for any of these settings:[/b]
 [list]
 [*]Use or don't use existing vehicles from the depot
 [*]Keep or sell remainders after the template replacement process
@@ -35,9 +108,8 @@ can:[/b]
 [b]Some options have not been implemented in 2.0 so far[/b]
 [list]
 [*]The possibility to set a template's refit/cargo type
-[*]The option to modify all templates at once by replacing an engine of a specific type in all
-  templates at once
-[*]Drag&drop editing of templates
+[*](Maybe) Filtering the template list by railtype
+[*](Maybe) Drag&drop editing of templates
 [/list]
 
 [b]Hotkey: CTRL+E opens the TBTR UI[/b]
