@@ -1,10 +1,8 @@
 
-updated:    2019-07-21
+updated:    2019-07-28
 
 
 STACK
-		! crash
-			- select first group, click stop replacement
         - release
             - prettify tt-f post
 				- sections
@@ -15,8 +13,13 @@ STACK
 					- github
 					? attachments
 				- screenshots
+			! bugs
+				* bug0.sav, commit 581278437
+				! trains display too high in their cell
+				! "no template selected" not printed for all groups
 
 	INTO TRUNK
+		- calculate train length for manually created trains
 		- test: when an engine is removed from a train, but with keep remainders, and it had shared
 		  orders, check if the orders still remain for other vehicles which share the orders
 		- code review
