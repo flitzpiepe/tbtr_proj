@@ -4,19 +4,8 @@ updated:    2019-07-28
 
 STACK
         - release
-            - prettify tt-f post
-				- sections
-					- intro
-					- history
-					- how to use it
-					- plans
-					- github
-					? attachments
-				- screenshots
-			! bugs
-				* bug0.sav, commit 581278437
-				! trains display too high in their cell
-				! "no template selected" not printed for all groups
+				- binaries against 1.9.2
+					* windows needed
 
 	INTO TRUNK
 		- calculate train length for manually created trains
