@@ -1,13 +1,46 @@
 
-updated:    2019-07-28
+updated:    2019-08-14
 
 
 STACK
-        - release
-				- binaries against 1.9.2
-					* windows needed
+	! when starting/loading
+		"broken savegame", "invalid chunk size"
+			* but when starting the game, not when loading a savegame...
+
+    - use template info panel
+        - print all cargo types which the selected template vehicle/chain can carry
+        - color indicates selected refit type
+        - print cargo capacities for selected cargo types
+	- test: go by cargo types supported by the engine
+		* Engine::Get(EngineID)->info->cargo_type (byte)
+		* Engine::Get(EngineID)->info->refit_mask (uint64)
+		* cargo_type.h enum CargoType
+		- has to be tested with the other climate types, see enum CargoType
+	? template refit
+		- rm in tbtr_gui.cpp:814 and so on
+		- code TODOs
+		* CALLS TO GET THE LIST OF REFITS
+			- vehicle_gui, oder_gui
+				- ShowVehicleRefitWindow(Vehicle*,...)
+					- RefitWindow(...,Vehicle*,...)
+						- RefitWindow::BuildRefitList()
+							- v->cargo_type = cid
+								if (GetCargoSubtypeText(v) == STR_EMPTY)
+								- GetVehicleCallback(...,const Vehicle*)
+									VehicleResolverObject(...,Vehicle*,...)
+										:
+										ResolverObject(GetEngineGrfFile(engine_type),...)
+									v->GetGRF()
+									- GetEngine::GetGRF()
+									v->GetGRFID()
+									- GetEngine::GetGRFID()
+		- vehicle_gui.cpp:408 BuildRefitList()
+		? reuse engine matrix +  toggle button
+		- also need to (in)validate existing refit orders for treated trains
+			* e.g. autoreplace_cmd.cpp:183
 
 	INTO TRUNK
+		! clone doesn't work when the train is not runnable/doesn't contain a loco
 		- calculate train length for manually created trains
 		- test: when an engine is removed from a train, but with keep remainders, and it had shared
 		  orders, check if the orders still remain for other vehicles which share the orders
@@ -24,10 +57,6 @@ STACK
 		- check if the backup strategy works
 			- insufficient money
 			- have a template where a move command should fail
-		? template refit
-			? reuse engine matrix +  toggle button
-			- also need to (in)validate existing refit orders for treated trains
-				* e.g. autoreplace_cmd.cpp:183
 		? filter by rail type
 
 	LATER
