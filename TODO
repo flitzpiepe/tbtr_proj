@@ -1,12 +1,14 @@
 
-updated:    2019-08-14
+updated:    2019-08-20
 
 
 STACK
-	! when starting/loading
-		"broken savegame", "invalid chunk size"
-			* but when starting the game, not when loading a savegame...
-
+	- add template refit window
+		- line height, same as for the templates
+			- check with different zoom levels
+				- see line 75
+		- revert the changes to the template info panel
+		- add button refit in the main ui
     - use template info panel
         - print all cargo types which the selected template vehicle/chain can carry
         - color indicates selected refit type
@@ -40,6 +42,7 @@ STACK
 			* e.g. autoreplace_cmd.cpp:183
 
 	INTO TRUNK
+		- rm commented code in tbtr_gui.cpp:593
 		! clone doesn't work when the train is not runnable/doesn't contain a loco
 		- calculate train length for manually created trains
 		- test: when an engine is removed from a train, but with keep remainders, and it had shared
