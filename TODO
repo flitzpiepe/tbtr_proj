@@ -1,23 +1,31 @@
 
-updated:    2019-08-20
+updated:    2019-08-24
 
 
 STACK
-	- get a cargo by ID or iterate through all possible cargos for the set climate/scenario
-	- get all valid cargos for 1 engine
-	- display cargos in the refit window
-		- get all valid cargos for a chain
+	- apply refit
+		- select cargo from refit list
+		- command refit template
+			- to all templates in the list
 	- add template refit window
-		- line height, same as for the templates
-			- drawing height of cargo types should be based on that
-			- check with different zoom levels
-				- see line 75
-		- display the currently selected template in the refit window
-			- disable refit button if no template is selected
-			- switch template in refit window when a new template is selected
-		- review all includes in the tbtr*refit* files
-		- check all zoom levels again
-		- code TODOs
+		- later
+			- update refit window after
+				- add engine
+				- delete engine
+				? delete template (when selected template has changed)
+				? clone template (when selected template has changed)
+			- more left spacing for the refit strings in the gui
+			- line height, same as for the templates
+				- drawing height of cargo types should be based on that
+				- check with different zoom levels
+					- see line 75
+			? select only a single engine
+			- display the currently selected template in the refit window
+				- disable refit button if no template is selected
+				- switch template in refit window when a new template is selected
+			- review all includes in the tbtr*refit* files
+			- check all zoom levels again
+			- code TODOs
 	- test: go by cargo types supported by the engine
 		* Engine::Get(EngineID)->info->cargo_type (byte)
 		* Engine::Get(EngineID)->info->refit_mask (uint64)
@@ -47,6 +55,7 @@ STACK
 			* e.g. autoreplace_cmd.cpp:183
 
 	INTO TRUNK
+			3. add engine
 		- rm commented code in tbtr_gui.cpp:593
 		! clone doesn't work when the train is not runnable/doesn't contain a loco
 		- calculate train length for manually created trains
