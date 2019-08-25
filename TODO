@@ -1,14 +1,16 @@
 
-updated:    2019-08-24
+updated:    2019-08-25
 
 
 STACK
-	- apply refit
-		- select cargo from refit list
-		- command refit template
-			- to all templates in the list
+	! incorrect cargo amount after the refit
+		* see template no.5
+		? tempaltevehicle::cargo_cap
 	- add template refit window
+		? what's with cargo_subtype of the template
+		? what's with cargo_cap of the template
 		- later
+			- select single vehicle in main ui + apply refit only for this one
 			- update refit window after
 				- add engine
 				- delete engine
@@ -19,8 +21,7 @@ STACK
 				- drawing height of cargo types should be based on that
 				- check with different zoom levels
 					- see line 75
-			? select only a single engine
-			- display the currently selected template in the refit window
+			? display the currently selected template in the refit window
 				- disable refit button if no template is selected
 				- switch template in refit window when a new template is selected
 			- review all includes in the tbtr*refit* files
@@ -55,7 +56,8 @@ STACK
 			* e.g. autoreplace_cmd.cpp:183
 
 	INTO TRUNK
-			3. add engine
+		? why are there left and right as locals in tbtr_gui.cpp:596
+			- should be r.left, ...
 		- rm commented code in tbtr_gui.cpp:593
 		! clone doesn't work when the train is not runnable/doesn't contain a loco
 		- calculate train length for manually created trains
