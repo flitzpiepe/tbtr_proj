@@ -1,15 +1,12 @@
 
-updated:    2019-08-28
+updated:    2019-08-29
 
 
 STACK
 	- template refit
-		- update refit window after
-			- add engine
-			- delete engine
-			? delete template (when selected template has changed)
-			? clone template (when selected template has changed)
+		- code TODOs
 		? what's with cargo_subtype of the template
+		- rename string ids ^STR_TEMPLATE_
 		- determine cargo capacity
 			- cached
 			- or find vehicle of engine type (v)
@@ -23,10 +20,9 @@ STACK
 				- disable refit button if no template is selected
 				- switch template in refit window when a new template is selected
 		- rm in tbtr_gui.cpp:814 and so on
-		- review all includes in the tbtr*refit* files
-		- code TODOs
 		- also need to (in)validate existing refit orders for treated trains
 			* e.g. autoreplace_cmd.cpp:183
+		- review all includes in the tbtr*refit* files
 
 	INTO TRUNK
 		! during template cloning, the vehicle's cargo capacity might not be the engine's default one
