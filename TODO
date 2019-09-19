@@ -1,12 +1,10 @@
 
-updated:    2019-08-31
+updated:    2019-09-19
 
 
 STACK
-	- test: create a new train + get the cargo cap + delete the train again
-		? network compatibility
-	- determine cargo capacity
-		? the cache needs to be added to save/load
+	? cargo cap cache to be added to save/load
+		- check FlowSaveLoad from station_sl.cpp
 	- template refit
 		- select single vehicle in main ui + apply refit only for this one
 			? display the currently selected template in the refit window
