@@ -25,7 +25,6 @@ namespace td
 			<< "  ty:" << std::setw(1) << t->type
 			<< "  st:" << std::setw(1) << (short)(t->subtype)
 			<< "  ct:" << std::setw(1) << (short)(t->cargo_type)
-			<< "  cs:" << std::setw(1) << (short)(t->cargo_subtype)
 			<< "  h:" << std::setw(14) << (t->first)
 			<< "  p:" << std::setw(14) << (t->prev)
 			<< "  n:" << std::setw(14) << (t->next)
@@ -92,6 +91,17 @@ namespace td
 		FOR_ALL_TEMPLATES(tv)
 		{
 			sv(tv);
+		}
+	}
+
+	void ecc()
+	{
+		std::cout << "ecc:" << std::endl;
+		for ( auto it = TemplateVehicle::engine_cargo_cap.cbegin();
+				it != TemplateVehicle::engine_cargo_cap.cend();
+				++it )
+		{
+			std::cout << it->first.first << "," << (int)it->first.second << "," << it->second << std::endl;
 		}
 	}
 }
