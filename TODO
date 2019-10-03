@@ -1,20 +1,10 @@
 
-updated:    2019-09-30
+updated:    2019-10-03
 
 
 STACK
-	- it's almost ok, you only have to click on the right half again to get the correct engine
-	! wrong engine selected when template is scrolled out of view
-	- template refit
-		! normalize
-			- TemplateRefitWindow::current_template (const TemplateVehicle*)
-				? should just be an ID
-		* toggle-refit-button is disabled after adding new engine without any template selected before, even
-		  though the newly created template is selected
-			* fixed on tbtr_dev
-		- remove tbtr_debug.h
-
 	INTO TRUNK
+		- add engine new after selected template part
 		! check if deleting a template really deletes the whole chain
 			* td::all_template_chains()
 		- rename tbtr*sl.cpp to tbtr_sl or something
