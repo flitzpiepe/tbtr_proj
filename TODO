@@ -3,17 +3,20 @@ updated:    2019-10-04
 
 
 STACK
-	! segfault when deleting an engine
-	- impl the delete engine
-		- test + cleanup
-			- tbtr_debug.h show head,p,n,last vehicles
-		? will need to impl the update of the prev pointer in cmdaddengine
-			? used in cmddelengine
-	- add engine new after selected template part
+	- add new engine new after selected template part
+		- adding a new engine should insert before the selected vehicle, not after
+			* because this way we can add a new head to the chain
+			* a new last vehicle can always be added by not selecting any template part
 		- rm tbtr_debug
 	INTO TRUNK
+		! TemplateVehicle has 2 methods for the same thing:
+			- DetermineSubtype() (based on the engine, called by addengine)
+			- UpdateSubtype() (based on the current subtype, called by deleteengine)
 		! check if deleting a template really deletes the whole chain
+			* td::all_templates()
+				- shows a lot of templates
 			* td::all_template_chains()
+				- show only one chain
 		? remove attr TemplateVehicle::prev
 			* not updated in CmdAddEngine (case: append_to_template_part)
 		- rename tbtr*sl.cpp to tbtr_sl or something
