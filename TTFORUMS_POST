@@ -39,6 +39,7 @@ in the group.
 selected from the bottom list and click "Add Engine". This will create a new template and select it.  While a
 template is selected you can append a new engine with "Add Engine" or remove the last engine from it with
 "Delete Engine".
+Adding a new engine can also be done by double clicking on an engine in the upper right list.
 [/list]
 
 Currently there is no option to set the refit for a template manually. But cloning a template from an existing
@@ -72,9 +73,21 @@ When this is ON each train part will use the same refit settings as the one in t
 This can be useful when 2 groups share the same template but will use it only to shuffle the vehicles around
 while the other will use it also to apply the refit.
 
+[color=#004080][b]Toggle Refit Window[/b][/color]
+This feature is new in 2.1.0. It allows to specify the cargotype to be changed for a template vehicle or the
+whole chain. When the refit window is opened, it will affect the currently selected template.
+
+[color=#004080][b]Selecting a single Template Vehicle[/b][/color]
+Since 2.1.0 it is possible to select a single vehicle from a template. This can be used to:
+[list]
+[*]Change the cargotype for only a single part of a template
+[*]Add a new engine in the middle of an existing template. The new engine will be added after the currently
+selected vehicle
+[*]Delete a single vehicle from the template
+[/list]
+
 [color=#FFBF00][b]__Wanted Features__[/b][/color]
 [list]
-[*]Refit Templates 
 [*]Filter by Railtype
 [/list]
 
@@ -85,11 +98,11 @@ This is not the case for templates that were cloned from a train
 [/list]
 
 [b]Screenshot[/b]
-[img]https://raw.githubusercontent.com/flitzpiepe/tbtr_proj/master/screenshot.png[/img]
+[img]https://raw.githubusercontent.com/flitzpiepe/tbtr_proj/master/screenshot_2.1.0.png[/img]
 
 [b]Patch available at github:[/b]
 git@github.com:flitzpiepe/OpenTTD.git
 
 [b]Binaries:[/b]
-Linux: [attachment=0]openttd_1.9.2_tbtr_2.0.2.tar.xz[/attachment]
+Linux: [attachment=0]openttd_1.9.3_tbtr_2.1.0.tar.xz[/attachment]
 [b]Windows:[/b] [i]upcoming[/i]

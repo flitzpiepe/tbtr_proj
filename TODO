@@ -1,14 +1,11 @@
 
-updated:    2019-10-04
+updated:    2019-10-08
 
 
 STACK
-	- add new engine new after selected template part
-		- adding a new engine should insert before the selected vehicle, not after
-			* because this way we can add a new head to the chain
-			* a new last vehicle can always be added by not selecting any template part
-		- rm tbtr_debug
 	INTO TRUNK
+		- change text alignment in the refit window
+		- sort all methods in TbtrGui
 		! TemplateVehicle has 2 methods for the same thing:
 			- DetermineSubtype() (based on the engine, called by addengine)
 			- UpdateSubtype() (based on the current subtype, called by deleteengine)
@@ -29,6 +26,7 @@ STACK
 		- calculate train length for manually created trains
 		- test: when an engine is removed from a train, but with keep remainders, and it had shared
 		  orders, check if the orders still remain for other vehicles which share the orders
+		- rm tbtr_debug
 		- code review
 			! ui
 				? rename button keep rem -> keep remainders
@@ -46,6 +44,9 @@ STACK
 		? filter by rail type
 
 	LATER
+		- length of a train could probably be reliably calculated by creating temporary train objects, like
+		  done for the cargo cap
+		- drag and drop vehicles inside template chain
 		? shift + click_on_clone_button => continuous cloning
 			* cloning is not disabled by selecting a vehicle
 			* can be disabled by clicking the clone button again
